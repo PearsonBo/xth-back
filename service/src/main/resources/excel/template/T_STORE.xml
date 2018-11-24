@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template version="1.0" type="singleSheet" exportVersion="false">
+    <sheet name="store" nameCN="store">
+        <meta>
+            <column property="name" dataType="string" excelTitleName="场馆名称"/>
+            <column property="companyId" dataType="string" excelTitleName="场馆所属商户公司ID"/>
+            <column property="country" dataType="string" excelTitleName="国家"/>
+            <column property="province" dataType="string" excelTitleName="省"/>
+            <column property="city" dataType="string" excelTitleName="市"/>
+            <column property="district" dataType="string" excelTitleName="区"/>
+            <column property="address" dataType="string" excelTitleName="详细地址"/>
+            <column property="longitude" dataType="string" excelTitleName="经度"/>
+            <column property="latitude" dataType="string" excelTitleName="纬度"/>
+            <column property="contactName" dataType="string" excelTitleName="联系人姓名"/>
+            <column property="contactPhone" dataType="string" excelTitleName="联系人电话"/>
+            <column property="storeLevelId" dataType="string" excelTitleName="场馆会员等级id"/>
+            <column property="starLevel" dataType="string" excelTitleName="星级"/>
+            <column property="imgUrl" dataType="string" excelTitleName="图片地址"/>
+            <column property="runYears" dataType="string" excelTitleName="经营时间（多少年）"/>
+            <column property="totalArea" dataType="string" excelTitleName="总面积"/>
+            <column property="trainingArea" dataType="string" excelTitleName="训练面积"/>
+            <column property="siteNums" dataType="string" excelTitleName="训练场地数量"/>
+            <column property="totalStuNums" dataType="string" excelTitleName="累计学员人数"/>
+            <column property="inStuNums" dataType="string" excelTitleName="在馆学员人数"/>
+            <column property="discount" dataType="string" excelTitleName="场馆折扣，即优惠的百分数"/>
+            <column property="hotLevel" dataType="string" excelTitleName="0代表非热门场馆，非0是热门场馆，数字越大越优先显示"/>
+            <column property="specialLevel" dataType="string" excelTitleName="0代表非特色场馆，非0是特色场馆，数字越大越优先显示"/>
+
+        </meta>
+        <header>
+        </header>
+    </sheet>
+</template>

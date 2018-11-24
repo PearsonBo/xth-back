@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xth.mapper.client.ClientMapper">
+
+    <!-- resultMap begin -->
+    <resultMap type="com.xth.model.bo.client.Client" id="ClientResultMap">
+        <!-- 0 -->
+        <result property="id" column="id"/>
+        <!-- 1 -->
+        <result property="createdTime" column="created_time"/>
+        <!-- 2 -->
+        <result property="updatedTime" column="updated_time"/>
+        <!-- 3 -->
+        <result property="creatorId" column="creator_id"/>
+        <!-- 4 -->
+        <result property="creator" column="creator"/>
+        <!-- 5 -->
+        <result property="updaterId" column="updater_id"/>
+        <!-- 6 -->
+        <result property="updater" column="updater"/>
+        <!-- 7 -->
+        <result property="lockVersion" column="lock_version"/>
+        <!-- 8 -->
+        <result property="nickname" column="nickname"/>
+        <!-- 9 -->
+        <result property="username" column="username"/>
+        <!-- 10 -->
+        <result property="gender" column="gender"/>
+        <!-- 11 -->
+        <result property="idNumber" column="id_number"/>
+        <!-- 12 -->
+        <result property="couponIds" column="coupon_ids"/>
+        <!-- 13 -->
+        <result property="clientLevelId" column="client_level_id"/>
+        <!-- 14 -->
+        <result property="loginNum" column="login_num"/>
+        <!-- 15 -->
+        <result property="lastLoginTime" column="last_login_time"/>
+        <!-- 16 -->
+        <result property="openId" column="open_id"/>
+        <result property="mobile" column="mobile"/>
+        <result property="lastLongitude" column="last_longitude"/>
+        <result property="lastLatitude" column="last_latitude"/>
+    </resultMap>
+
+    <resultMap type="com.xth.model.vo.client.ClientVo" id="ClientVoResultMap">
+        <!-- 0 -->
+        <result property="id" column="id"/>
+        <!-- 1 -->
+        <result property="createdTime" column="created_time"/>
+        <!-- 2 -->
+        <result property="updatedTime" column="updated_time"/>
+        <!-- 3 -->
+        <result property="creatorId" column="creator_id"/>
+        <!-- 4 -->
+        <result property="creator" column="creator"/>
+        <!-- 5 -->
+        <result property="updaterId" column="updater_id"/>
+        <!-- 6 -->
+        <result property="updater" column="updater"/>
+        <!-- 7 -->
+        <result property="lockVersion" column="lock_version"/>
+        <!-- 8 -->
+        <result property="nickname" column="nickname"/>
+        <!-- 9 -->
+        <result property="username" column="username"/>
+        <!-- 10 -->
+        <result property="gender" column="gender"/>
+        <!-- 11 -->
+        <result property="idNumber" column="id_number"/>
+        <!-- 12 -->
+        <result property="couponIds" column="coupon_ids"/>
+        <!-- 13 -->
+        <result property="clientLevelId" column="client_level_id"/>
+        <!-- 14 -->
+        <result property="loginNum" column="login_num"/>
+        <!-- 15 -->
+        <result property="lastLoginTime" column="last_login_time"/>
+        <result property="openId" column="open_id"/>
+        <result property="mobile" column="mobile"/>
+        <result property="lastLongitude" column="last_longitude"/>
+        <result property="lastLatitude" column="last_latitude"/>
+    </resultMap>
+    <!-- resultMap end -->
+
+    <!-- CRUD begin -->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into t_client(
+        <!-- 0 -->id,
+        <!-- 1 -->created_time,
+        <!-- 2 -->updated_time,
+        <!-- 3 -->creator_id,
+        <!-- 4 -->creator,
+        <!-- 5 -->updater_id,
+        <!-- 6 -->updater,
+        <!-- 7 -->lock_version,
+        <!-- 8 -->nickname,
+        <!-- 9 -->username,
+        <!-- 10 -->gender,
+        <!-- 11 -->id_number,
+        <!-- 12 -->coupon_ids,
+        <!-- 13 -->client_level_id,
+        <!-- 14 -->login_num,
+        <!-- 15 -->last_login_time,
+        <!-- 15 -->open_id,
+        <!-- 15 -->mobile,
+        <!-- 15 -->last_longitude,
+        <!-- 15 -->last_latitude
+        )
+        values(
+        <!-- 0 -->#{id},
+        <!-- 1 -->#{createdTime},
+        <!-- 2 -->#{updatedTime},
+        <!-- 3 -->#{creatorId},
+        <!-- 4 -->#{creator},
+        <!-- 5 -->#{updaterId},
+        <!-- 6 -->#{updater},
+        <!-- 7 -->#{lockVersion},
+        <!-- 8 -->#{nickname},
+        <!-- 9 -->#{username},
+        <!-- 10 -->#{gender},
+        <!-- 11 -->#{idNumber},
+        <!-- 12 -->#{couponIds},
+        <!-- 13 -->#{clientLevelId},
+        <!-- 14 -->#{loginNum},
+        <!-- 15 -->#{lastLoginTime},
+        <!-- 15 -->#{openId},
+        <!-- 15 -->#{mobile},
+        <!-- 15 -->#{lastLongitude},
+        <!-- 15 -->#{lastLatitude}
+        )
+
+    </insert>
+
+    <insert id="batchInsert">
+        insert into t_client(
+        <!-- 0 -->id,
+        <!-- 1 -->created_time,
+        <!-- 2 -->updated_time,
+        <!-- 3 -->creator_id,
+        <!-- 4 -->creator,
+        <!-- 5 -->updater_id,
+        <!-- 6 -->updater,
+        <!-- 7 -->lock_version,
+        <!-- 8 -->nickname,
+        <!-- 9 -->username,
+        <!-- 10 -->gender,
+        <!-- 11 -->id_number,
+        <!-- 12 -->coupon_ids,
+        <!-- 13 -->client_level_id,
+        <!-- 14 -->login_num,
+        <!-- 15 -->last_login_time,
+        <!-- 15 -->open_id,
+        <!-- 15 -->mobile,
+        <!-- 15 -->last_longitude,
+        <!-- 15 -->last_latitude
+        )
+        SELECT t_client_seq.NEXTVAL,A.* FROM (
+        <foreach collection="list" item="item" index="index" separator="union all">
+            SELECT
+            <!-- 0 -->#{item.createdTime},
+            <!-- 1 -->#{item.updatedTime},
+            <!-- 2 -->#{item.creatorId},
+            <!-- 3 -->#{item.creator},
+            <!-- 4 -->#{item.updaterId},
+            <!-- 5 -->#{item.updater},
+            <!-- 6 -->#{item.lockVersion},
+            <!-- 7 -->#{item.nickname},
+            <!-- 8 -->#{item.username},
+            <!-- 9 -->#{item.gender},
+            <!-- 10 -->#{item.idNumber},
+            <!-- 11 -->#{item.couponIds},
+            <!-- 12 -->#{item.clientLevelId},
+            <!-- 13 -->#{item.loginNum},
+            <!-- 14 -->#{item.lastLoginTime},
+            <!-- 14 -->#{item.openId},
+            <!-- 14 -->#{item.mobile},
+            <!-- 15 -->#{item.lastLongitude},
+            <!-- 15 -->#{item.lastLatitude}
+            FROM DUAL
+        </foreach>
+        ) A
+    </insert>
+
+    <update id="update">
+        update t_client
+        <include refid="updateSetSql"/>
+        where id=#{id} and lock_version=#{lockVersion}
+    </update>
+
+    <sql id="updateSetSql">
+        <set>
+            <if test="createdTime !=null ">
+                <!-- 0 -->created_time=#{createdTime},
+            </if>
+            <if test="updatedTime !=null ">
+                <!-- 1 -->updated_time=#{updatedTime},
+            </if>
+            <if test="creatorId !=null ">
+                <!-- 2 -->creator_id=#{creatorId},
+            </if>
+            <if test="creator!=null and creator!='' ">
+                <!-- 3 -->creator=#{creator},
+            </if>
+            <if test="updaterId !=null ">
+                <!-- 4 -->updater_id=#{updaterId},
+            </if>
+            <if test="updater!=null and updater!='' ">
+                <!-- 5 -->updater=#{updater},
+            </if>
+            <!-- 6 -->lock_version=#{lockVersion}+1,
+            <if test="nickname!=null and nickname!='' ">
+                <!-- 7 -->nickname=#{nickname},
+            </if>
+            <if test="username!=null and username!='' ">
+                <!-- 8 -->username=#{username},
+            </if>
+            <if test="gender!=null and gender!='' ">
+                <!-- 9 -->gender=#{gender},
+            </if>
+            <if test="idNumber!=null and idNumber!='' ">
+                <!-- 10 -->id_number=#{idNumber},
+            </if>
+            <if test="couponIds!=null and couponIds!='' ">
+                <!-- 11 -->coupon_ids=#{couponIds},
+            </if>
+            <if test="clientLevelId !=null ">
+                <!-- 12 -->client_level_id=#{clientLevelId},
+            </if>
+            <if test="loginNum !=null ">
+                <!-- 13 -->login_num=#{loginNum},
+            </if>
+            <if test="lastLoginTime !=null ">
+                <!-- 14 -->last_login_time=#{lastLoginTime},
+            </if>
+            <if test="openId !=null and openId !=''">
+                <!-- 14 -->open_id=#{openId},
+            </if>
+            <if test="mobile !=null and mobile !=''">
+                <!-- 14 -->mobile=#{mobile},
+            </if>
+            <if test="lastLongitude !=null and lastLongitude !=''">
+                <!-- 14 -->last_longitude=#{lastLongitude},
+            </if>
+            <if test="lastLatitude !=null and lastLatitude !=''">
+                <!-- 14 -->last_latitude=#{lastLatitude}
+            </if>
+        </set>
+    </sql>
+
+    <delete id="delete">
+        delete from t_client where id = #{id}
+    </delete>
+
+    <delete id="deleteByIdList">
+        delete from t_client t where t.id in
+        <foreach collection="list" index="dex" item="item" open="("
+                 close=")" separator=",">
+            #{item}
+        </foreach>
+    </delete>
+
+    <select id="findBo" resultMap="ClientResultMap">
+        select * from t_client where id
+        = #{id}
+    </select>
+
+    <select id="findVo" resultMap="ClientVoResultMap">
+        select * from t_client where
+        id = #{id}
+    </select>
+
+    <select id="listBoBySo" resultMap="ClientResultMap">
+        select t.* from t_client t
+        <include refid="soSqlFilter"/>
+        order by id desc
+    </select>
+
+    <select id="listIdBySo" resultType="long">
+        select t.id from t_client t
+        <include refid="soSqlFilter"/>
+    </select>
+
+    <select id="listVoBySo" resultMap="ClientVoResultMap">
+        select t.* from t_client t
+        <include refid="soSqlFilter"/>
+        order by id desc
+    </select>
+
+    <select id="countBySo" resultType="int">
+        select count(1) from t_client t
+        <include refid="soSqlFilter"/>
+    </select>
+
+    <select id="listVoByIdList" resultMap="ClientVoResultMap">
+        select * from t_client t where t.id in
+        <foreach collection="list" index="dex" item="item" open="("
+                 close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+
+    <select id="listBoByIdList" resultMap="ClientResultMap">
+        select * from t_client t where t.id in
+        <foreach collection="list" index="dex" item="item" open="("
+                 close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+
+    <sql id="soSqlFilter">
+        <where>
+            <include refid="soSqlFilterRef"/>
+            <if test="id !=null ">
+                and t.id = #{id}
+            </if>
+            <if test="creatorId !=null ">
+                and t.creator_id = #{creatorId}
+            </if>
+            <if test="creator !=null and creator !='' ">
+                and t.creator = #{creator}
+            </if>
+            <if test="updaterId !=null ">
+                and t.updater_id = #{updaterId}
+            </if>
+            <if test="updater !=null and updater !='' ">
+                and t.updater = #{updater}
+            </if>
+            <if test="nickname !=null and nickname !='' ">
+                and t.nickname = #{nickname}
+            </if>
+            <if test="username !=null and username !='' ">
+                and t.username = #{username}
+            </if>
+            <if test="gender !=null and gender !='' ">
+                and t.gender = #{gender}
+            </if>
+            <if test="idNumber !=null and idNumber !='' ">
+                and t.id_number = #{idNumber}
+            </if>
+            <if test="couponIds !=null and couponIds !='' ">
+                and t.coupon_ids = #{couponIds}
+            </if>
+            <if test="clientLevelId !=null ">
+                and t.client_level_id = #{clientLevelId}
+            </if>
+            <if test="loginNum !=null ">
+                and t.login_num = #{loginNum}
+            </if>
+            <if test="lastLoginTime !=null ">
+                and t.last_login_time = #{lastLoginTime}
+            </if>
+            <if test="openId !=null and openId !=''">
+                and t.open_id = #{openId}
+            </if>
+            <if test="mobile !=null and mobile !=''">
+                and t.mobile = #{mobile}
+            </if>
+            <if test="lastLongitude !=null and lastLongitude !=''">
+                <!-- 14 -->and t.last_longitude=#{lastLongitude}
+            </if>
+            <if test="lastLatitude !=null and lastLatitude !=''">
+                <!-- 14 -->and t.last_latitude=#{lastLatitude}
+            </if>
+            <if test="idList !=null and idList.size() > 0 ">
+                and t.id in
+                <foreach collection="idList" index="dex" item="item" open="("
+                         close=")" separator=",">
+                    #{item}
+                </foreach>
+            </if>
+
+        </where>
+    </sql>
+    <!-- CRUD end -->
+
+    <!-- business begin -->
+    <sql id="soSqlFilterRef">
+    </sql>
+    <!-- business end -->
+</mapper>

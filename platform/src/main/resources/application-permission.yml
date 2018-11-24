@@ -1,0 +1,11 @@
+permission:
+  permissionInfo:
+    commonPermissionList:
+      - prefix: /rest/menuItem
+      - prefix: /rest/role
+      - prefix: /rest/operator
+      - prefix: /rest/organization
+    specificPermissionList:
+    - url:  /rest/test/create
+      perms:  /rest/test:create
+        roles:

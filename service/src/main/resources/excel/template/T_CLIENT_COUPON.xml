@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template version="1.0" type="singleSheet" exportVersion="false">
+    <sheet name="clientCoupon" nameCN="clientCoupon">
+        <meta>
+            <column property="clientId" dataType="string" excelTitleName="客户id"/>
+            <column property="couponId" dataType="string" excelTitleName="优惠券id"/>
+            <column property="isUsed" dataType="string" excelTitleName="是否使用过"/>
+
+        </meta>
+        <header>
+        </header>
+    </sheet>
+</template>

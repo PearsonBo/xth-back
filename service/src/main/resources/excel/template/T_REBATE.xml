@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template version="1.0" type="singleSheet" exportVersion="false">
+    <sheet name="rebate" nameCN="rebate">
+        <meta>
+            <column property="clientId" dataType="string" excelTitleName="用户ID"/>
+            <column property="storeId" dataType="string" excelTitleName="场馆ID"/>
+            <column property="consumeMoney" dataType="string" excelTitleName="消费金额"/>
+            <column property="returnMoney" dataType="string" excelTitleName="返回金额"/>
+            <column property="couponId" dataType="string" excelTitleName="使用的优惠券"/>
+            <column property="attachment" dataType="string" excelTitleName="附件"/>
+            <column property="status" dataType="string" excelTitleName="返利状态"/>
+
+        </meta>
+        <header>
+        </header>
+    </sheet>
+</template>

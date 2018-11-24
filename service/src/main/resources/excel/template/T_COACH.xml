@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template version="1.0" type="singleSheet" exportVersion="false">
+    <sheet name="coach" nameCN="coach">
+        <meta>
+            <column property="name" dataType="string" excelTitleName="教练姓名"/>
+            <column property="gender" dataType="string" excelTitleName="性别"/>
+            <column property="birthYear" dataType="string" excelTitleName="出生年份（到年）"/>
+            <column property="idNumber" dataType="string" excelTitleName="身份证号"/>
+            <column property="phone" dataType="string" excelTitleName="联系电话"/>
+            <column property="storeId" dataType="string" excelTitleName="所属场馆id"/>
+            <column property="speciality" dataType="string" excelTitleName="特长描述"/>
+            <column property="imgUrl" dataType="string" excelTitleName="图片地址"/>
+            <column property="starLevel" dataType="string" excelTitleName="星级"/>
+            <column property="goldLevel" dataType="string" excelTitleName="0代表非金牌教练，非0是金牌教练，数字越大越优先显示"/>
+            <column property="sortIndex" dataType="string" excelTitleName="排序"/>
+            <column property="teachAge" dataType="string" excelTitleName="教龄（年）"/>
+            <column property="startYear" dataType="string" excelTitleName="最初执教时间（年）"/>
+            <column property="awardNum" dataType="string" excelTitleName="获奖数量"/>
+            <column property="ccieNum" dataType="string" excelTitleName="证书数量"/>
+
+        </meta>
+        <header>
+        </header>
+    </sheet>
+</template>

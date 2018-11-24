@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template version="1.0" type="singleSheet" exportVersion="false">
+    <sheet name="operator" nameCN="operator">
+        <meta>
+            <column property="loginName" dataType="string" excelTitleName="登录名"/>
+            <column property="password" dataType="string" excelTitleName="密码"/>
+            <column property="mobile" dataType="string" excelTitleName="电话号码"/>
+            <column property="loginTime" dataType="string" excelTitleName="登录时间"/>
+            <column property="lastLoginTime" dataType="string" excelTitleName="上次登录时间"/>
+            <column property="passwordErrorTimes" dataType="string" excelTitleName="登录错误次数"/>
+
+        </meta>
+        <header>
+        </header>
+    </sheet>
+</template>

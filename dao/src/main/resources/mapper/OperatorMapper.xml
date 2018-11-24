@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xth.mapper.operator.OperatorMapper">
+
+    <!-- resultMap begin -->
+    <resultMap type="com.xth.model.bo.operator.Operator" id="OperatorResultMap">
+        <!-- 0 -->
+        <result property="id" column="id"/>
+        <!-- 1 -->
+        <result property="createdTime" column="created_time"/>
+        <!-- 2 -->
+        <result property="updatedTime" column="updated_time"/>
+        <!-- 3 -->
+        <result property="creatorId" column="creator_id"/>
+        <!-- 4 -->
+        <result property="creator" column="creator"/>
+        <!-- 5 -->
+        <result property="updaterId" column="updater_id"/>
+        <!-- 6 -->
+        <result property="updater" column="updater"/>
+        <!-- 7 -->
+        <result property="lockVersion" column="lock_version"/>
+        <!-- 8 -->
+        <result property="loginName" column="login_name"/>
+        <!-- 9 -->
+        <result property="password" column="password"/>
+        <!-- 10 -->
+        <result property="mobile" column="mobile"/>
+        <!-- 11 -->
+        <result property="loginTime" column="login_time"/>
+        <!-- 12 -->
+        <result property="lastLoginTime" column="last_login_time"/>
+        <!-- 13 -->
+        <result property="passwordErrorTimes" column="password_error_times"/>
+
+    </resultMap>
+
+    <resultMap type="com.xth.model.vo.operator.OperatorVo" id="OperatorVoResultMap">
+        <!-- 0 -->
+        <result property="id" column="id"/>
+        <!-- 1 -->
+        <result property="createdTime" column="created_time"/>
+        <!-- 2 -->
+        <result property="updatedTime" column="updated_time"/>
+        <!-- 3 -->
+        <result property="creatorId" column="creator_id"/>
+        <!-- 4 -->
+        <result property="creator" column="creator"/>
+        <!-- 5 -->
+        <result property="updaterId" column="updater_id"/>
+        <!-- 6 -->
+        <result property="updater" column="updater"/>
+        <!-- 7 -->
+        <result property="lockVersion" column="lock_version"/>
+        <!-- 8 -->
+        <result property="loginName" column="login_name"/>
+        <!-- 9 -->
+        <result property="password" column="password"/>
+        <!-- 10 -->
+        <result property="mobile" column="mobile"/>
+        <!-- 11 -->
+        <result property="loginTime" column="login_time"/>
+        <!-- 12 -->
+        <result property="lastLoginTime" column="last_login_time"/>
+        <!-- 13 -->
+        <result property="passwordErrorTimes" column="password_error_times"/>
+
+    </resultMap>
+    <!-- resultMap end -->
+
+    <!-- CRUD begin -->
+    <insert id="insert">
+        insert into t_operator(
+        <!-- 0 -->id,
+        <!-- 1 -->created_time,
+        <!-- 2 -->updated_time,
+        <!-- 3 -->creator_id,
+        <!-- 4 -->creator,
+        <!-- 5 -->updater_id,
+        <!-- 6 -->updater,
+        <!-- 7 -->lock_version,
+        <!-- 8 -->login_name,
+        <!-- 9 -->password,
+        <!-- 10 -->mobile,
+        <!-- 11 -->login_time,
+        <!-- 12 -->last_login_time,
+        <!-- 13 -->password_error_times
+        )
+        values(
+        <!-- 0 -->#{id},
+        <!-- 1 -->#{createdTime},
+        <!-- 2 -->#{updatedTime},
+        <!-- 3 -->#{creatorId},
+        <!-- 4 -->#{creator},
+        <!-- 5 -->#{updaterId},
+        <!-- 6 -->#{updater},
+        <!-- 7 -->#{lockVersion},
+        <!-- 8 -->#{loginName},
+        <!-- 9 -->#{password},
+        <!-- 10 -->#{mobile},
+        <!-- 11 -->#{loginTime},
+        <!-- 12 -->#{lastLoginTime},
+        <!-- 13 -->#{passwordErrorTimes}
+        )
+
+    </insert>
+
+    <insert id="batchInsert">
+        insert into t_operator(
+        <!-- 0 -->id,
+        <!-- 1 -->created_time,
+        <!-- 2 -->updated_time,
+        <!-- 3 -->creator_id,
+        <!-- 4 -->creator,
+        <!-- 5 -->updater_id,
+        <!-- 6 -->updater,
+        <!-- 7 -->lock_version,
+        <!-- 8 -->login_name,
+        <!-- 9 -->password,
+        <!-- 10 -->mobile,
+        <!-- 11 -->login_time,
+        <!-- 12 -->last_login_time,
+        <!-- 13 -->password_error_times
+        )
+        SELECT t_operator_seq.NEXTVAL,A.* FROM (
+        <foreach collection="list" item="item" index="index" separator="union all">
+            SELECT
+            <!-- 0 -->#{item.createdTime},
+            <!-- 1 -->#{item.updatedTime},
+            <!-- 2 -->#{item.creatorId},
+            <!-- 3 -->#{item.creator},
+            <!-- 4 -->#{item.updaterId},
+            <!-- 5 -->#{item.updater},
+            <!-- 6 -->#{item.lockVersion},
+            <!-- 7 -->#{item.loginName},
+            <!-- 8 -->#{item.password},
+            <!-- 9 -->#{item.mobile},
+            <!-- 10 -->#{item.loginTime},
+            <!-- 11 -->#{item.lastLoginTime},
+            <!-- 12 -->#{item.passwordErrorTimes}
+            FROM DUAL
+        </foreach>
+        ) A
+    </insert>
+
+    <update id="update">
+        update t_operator
+        <include refid="updateSetSql"/>
+        where id=#{id} and lock_version=#{lockVersion}
+    </update>
+
+    <sql id="updateSetSql">
+        <set>
+            <if test="createdTime !=null ">
+                <!-- 0 -->created_time=#{createdTime},
+            </if>
+            <if test="updatedTime !=null ">
+                <!-- 1 -->updated_time=#{updatedTime},
+            </if>
+            <if test="creatorId !=null ">
+                <!-- 2 -->creator_id=#{creatorId},
+            </if>
+            <if test="creator!=null and creator!='' ">
+                <!-- 3 -->creator=#{creator},
+            </if>
+            <if test="updaterId !=null ">
+                <!-- 4 -->updater_id=#{updaterId},
+            </if>
+            <if test="updater!=null and updater!='' ">
+                <!-- 5 -->updater=#{updater},
+            </if>
+            <!-- 6 -->lock_version=#{lockVersion}+1,
+            <if test="loginName!=null and loginName!='' ">
+                <!-- 7 -->login_name=#{loginName},
+            </if>
+            <if test="password!=null and password!='' ">
+                <!-- 8 -->password=#{password},
+            </if>
+            <if test="mobile!=null and mobile!='' ">
+                <!-- 9 -->mobile=#{mobile},
+            </if>
+            <if test="loginTime !=null ">
+                <!-- 10 -->login_time=#{loginTime},
+            </if>
+            <if test="lastLoginTime !=null ">
+                <!-- 11 -->last_login_time=#{lastLoginTime},
+            </if>
+            <if test="passwordErrorTimes !=null ">
+                <!-- 12 -->password_error_times=#{passwordErrorTimes}
+            </if>
+
+        </set>
+    </sql>
+
+    <delete id="delete">
+        delete from t_operator where id = #{id}
+    </delete>
+
+    <delete id="deleteByIdList">
+        delete from t_operator t where t.id in
+        <foreach collection="list" index="dex" item="item" open="("
+                 close=")" separator=",">
+            #{item}
+        </foreach>
+    </delete>
+
+    <select id="findBo" resultMap="OperatorResultMap">
+        select * from t_operator where id
+        = #{id}
+    </select>
+
+    <select id="findVo" resultMap="OperatorVoResultMap">
+        select * from t_operator where
+        id = #{id}
+    </select>
+
+    <select id="listBoBySo" resultMap="OperatorResultMap">
+        select t.* from t_operator t
+        <include refid="soSqlFilter"/>
+        order by id desc
+    </select>
+
+    <select id="listIdBySo" resultType="long">
+        select t.id from t_operator t
+        <include refid="soSqlFilter"/>
+    </select>
+
+    <select id="listVoBySo" resultMap="OperatorVoResultMap">
+        select t.* from t_operator t
+        <include refid="soSqlFilter"/>
+        order by id desc
+    </select>
+
+    <select id="countBySo" resultType="int">
+        select count(1) from t_operator t
+        <include refid="soSqlFilter"/>
+    </select>
+
+    <select id="listVoByIdList" resultMap="OperatorVoResultMap">
+        select * from t_operator t where t.id in
+        <foreach collection="list" index="dex" item="item" open="("
+                 close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+
+    <select id="listBoByIdList" resultMap="OperatorResultMap">
+        select * from t_operator t where t.id in
+        <foreach collection="list" index="dex" item="item" open="("
+                 close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+
+    <sql id="soSqlFilter">
+        <where>
+            <include refid="soSqlFilterRef"/>
+            <if test="id !=null ">
+                and t.id = #{id}
+            </if>
+            <if test="creatorId !=null ">
+                and t.creator_id = #{creatorId}
+            </if>
+            <if test="creator !=null and creator !='' ">
+                and t.creator = #{creator}
+            </if>
+            <if test="updaterId !=null ">
+                and t.updater_id = #{updaterId}
+            </if>
+            <if test="updater !=null and updater !='' ">
+                and t.updater = #{updater}
+            </if>
+            <if test="loginName !=null and loginName !='' ">
+                and t.login_name = #{loginName}
+            </if>
+            <if test="password !=null and password !='' ">
+                and t.password = #{password}
+            </if>
+            <if test="mobile !=null and mobile !='' ">
+                and t.mobile = #{mobile}
+            </if>
+            <if test="loginTime !=null ">
+                and t.login_time = #{loginTime}
+            </if>
+            <if test="lastLoginTime !=null ">
+                and t.last_login_time = #{lastLoginTime}
+            </if>
+            <if test="passwordErrorTimes !=null ">
+                and t.password_error_times = #{passwordErrorTimes}
+            </if>
+            <if test="idList !=null and idList.size() > 0 ">
+                and t.id in
+                <foreach collection="idList" index="dex" item="item" open="("
+                         close=")" separator=",">
+                    #{item}
+                </foreach>
+            </if>
+
+        </where>
+    </sql>
+    <!-- CRUD end -->
+
+    <!-- business begin -->
+    <sql id="soSqlFilterRef">
+    </sql>
+
+    <resultMap type="com.xth.model.vo.menu.MenuItemVo" id="MenuItemVoResultMap">
+        <!-- 0 -->
+        <result property="id" column="id"/>
+        <!-- 1 -->
+        <result property="createdTime" column="created_time"/>
+        <!-- 2 -->
+        <result property="updatedTime" column="updated_time"/>
+        <!-- 3 -->
+        <result property="creatorId" column="creator_id"/>
+        <!-- 4 -->
+        <result property="creator" column="creator"/>
+        <!-- 5 -->
+        <result property="updaterId" column="updater_id"/>
+        <!-- 6 -->
+        <result property="updater" column="updater"/>
+        <!-- 7 -->
+        <result property="lockVersion" column="lock_version"/>
+        <!-- 9 -->
+        <result property="name" column="name"/>
+        <!-- 10 -->
+        <result property="type" column="type"/>
+        <!-- 11 -->
+        <result property="url" column="url"/>
+        <!-- 12 -->
+        <result property="parentId" column="parent_id"/>
+        <!-- 13 -->
+        <result property="parentPath" column="parent_path"/>
+        <!-- 14 -->
+        <result property="permission" column="permission"/>
+        <!-- 15 -->
+        <result property="sortIndex" column="sort_index"/>
+        <!-- 16 -->
+        <result property="remark" column="remark"/>
+        <!-- 17 -->
+        <result property="locked" column="locked"/>
+        <!-- 18 -->
+        <result property="jsUrl" column="js_url"/>
+
+    </resultMap>
+
+    <select id="listMenuItemByOperatorId" parameterType="Long" resultMap="MenuItemVoResultMap">
+        select distinct tmi.*
+        from t_operator_role tor,
+        t_role tr,
+        t_role_menu trm,
+        t_menu_item tmi
+        where tor.operator_id = #{operatorId}
+        and tor.role_id = tr.id
+        and tr.id = trm.role_id
+        and trm.menu_id = tmi.id
+        and tmi.locked = 0 order by tmi.sort_index
+    </select>
+
+    <resultMap type="com.xth.model.vo.menu.RoleVo" id="RoleVoResultMap">
+        <!-- 0 -->
+        <result property="id" column="id"/>
+        <!-- 1 -->
+        <result property="createdTime" column="created_time"/>
+        <!-- 2 -->
+        <result property="updatedTime" column="updated_time"/>
+        <!-- 3 -->
+        <result property="creatorId" column="creator_id"/>
+        <!-- 4 -->
+        <result property="creator" column="creator"/>
+        <!-- 5 -->
+        <result property="updaterId" column="updater_id"/>
+        <!-- 6 -->
+        <result property="updater" column="updater"/>
+        <!-- 7 -->
+        <result property="lockVersion" column="lock_version"/>
+        <!-- 9 -->
+        <result property="name" column="name"/>
+        <!-- 10 -->
+        <result property="roleType" column="role_type"/>
+        <!-- 11 -->
+        <result property="remark" column="remark"/>
+        <!-- 12 -->
+        <result property="status" column="status"/>
+
+    </resultMap>
+
+    <select id="listRoleListByOperatorId" resultMap="RoleVoResultMap">
+        select t.* from t_role t
+        left join t_operator_role tor on t.id = tor.ROLE_ID
+        where tor.operator_id = #{operatorId}
+    </select>
+
+    <select id="selectAllMenuItem" resultMap="MenuItemVoResultMap">
+        select t.* from t_menu_item t
+    </select>
+
+    <select id="selectMenuItemByOperatorId" parameterType="Long" resultMap="MenuItemVoResultMap">
+        select distinct tmi.*
+        from t_operator_role tor,
+        t_role tr,
+        t_role_menu trm,
+        t_menu_item tmi
+        where tor.operator_id = #{operatorId}
+        and tor.role_id = tr.id
+        and tr.id = trm.role_id
+        and trm.menu_id = tmi.id
+        and tmi.locked = 0 order by tmi.sort_index
+    </select>
+    <!-- business end -->
+</mapper>

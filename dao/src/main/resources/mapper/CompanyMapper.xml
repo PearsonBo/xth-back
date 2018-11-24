@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xth.mapper.company.CompanyMapper">
+
+    <!-- resultMap begin -->
+    <resultMap type="com.xth.model.bo.company.Company" id="CompanyResultMap">
+        		<!-- 0 --><result property="id"  column="id" />
+		<!-- 1 --><result property="createdTime"  column="created_time" />
+		<!-- 2 --><result property="updatedTime"  column="updated_time" />
+		<!-- 3 --><result property="creatorId"  column="creator_id" />
+		<!-- 4 --><result property="creator"  column="creator" />
+		<!-- 5 --><result property="updaterId"  column="updater_id" />
+		<!-- 6 --><result property="updater"  column="updater" />
+		<!-- 7 --><result property="lockVersion"  column="lock_version" />
+		<!-- 9 --><result property="name"  column="name" />
+		<!-- 10 --><result property="companyLevelId"  column="company_level_id" />
+		<!-- 11 --><result property="starLevel"  column="star_level" />
+		<!-- 12 --><result property="identification"  column="identification" />
+		<!-- 13 --><result property="legalPerson"  column="legal_person" />
+		<!-- 14 --><result property="setUpTime"  column="set_up_time" />
+
+    </resultMap>
+
+    <resultMap type="com.xth.model.vo.company.CompanyVo" id="CompanyVoResultMap">
+        		<!-- 0 --><result property="id"  column="id" />
+		<!-- 1 --><result property="createdTime"  column="created_time" />
+		<!-- 2 --><result property="updatedTime"  column="updated_time" />
+		<!-- 3 --><result property="creatorId"  column="creator_id" />
+		<!-- 4 --><result property="creator"  column="creator" />
+		<!-- 5 --><result property="updaterId"  column="updater_id" />
+		<!-- 6 --><result property="updater"  column="updater" />
+		<!-- 7 --><result property="lockVersion"  column="lock_version" />
+		<!-- 9 --><result property="name"  column="name" />
+		<!-- 10 --><result property="companyLevelId"  column="company_level_id" />
+		<!-- 11 --><result property="starLevel"  column="star_level" />
+		<!-- 12 --><result property="identification"  column="identification" />
+		<!-- 13 --><result property="legalPerson"  column="legal_person" />
+		<!-- 14 --><result property="setUpTime"  column="set_up_time" />
+
+    </resultMap>
+    <!-- resultMap end -->
+
+    <!-- CRUD begin -->
+    <insert id="insert">
+		insert into t_company(
+		<!-- 0 -->id,
+		<!-- 1 -->created_time,
+		<!-- 2 -->updated_time,
+		<!-- 3 -->creator_id,
+		<!-- 4 -->creator,
+		<!-- 5 -->updater_id,
+		<!-- 6 -->updater,
+		<!-- 7 -->lock_version,
+		<!-- 9 -->name,
+		<!-- 10 -->company_level_id,
+		<!-- 11 -->star_level,
+		<!-- 12 -->identification,
+		<!-- 13 -->legal_person,
+		<!-- 14 -->set_up_time
+		) 
+		values(
+		<!-- 0 -->#{id},
+		<!-- 1 -->#{createdTime},
+		<!-- 2 -->#{updatedTime},
+		<!-- 3 -->#{creatorId},
+		<!-- 4 -->#{creator},
+		<!-- 5 -->#{updaterId},
+		<!-- 6 -->#{updater},
+		<!-- 7 -->#{lockVersion},
+		<!-- 9 -->#{name},
+		<!-- 10 -->#{companyLevelId},
+		<!-- 11 -->#{starLevel},
+		<!-- 12 -->#{identification},
+		<!-- 13 -->#{legalPerson},
+		<!-- 14 -->#{setUpTime}
+		)
+
+    </insert>
+
+    <insert id="batchInsert">
+        insert into t_company(
+		<!-- 0 -->id,
+		<!-- 1 -->created_time,
+		<!-- 2 -->updated_time,
+		<!-- 3 -->creator_id,
+		<!-- 4 -->creator,
+		<!-- 5 -->updater_id,
+		<!-- 6 -->updater,
+		<!-- 7 -->lock_version,
+		<!-- 9 -->name,
+		<!-- 10 -->company_level_id,
+		<!-- 11 -->star_level,
+		<!-- 12 -->identification,
+		<!-- 13 -->legal_person,
+		<!-- 14 -->set_up_time
+		) 
+		SELECT t_company_seq.NEXTVAL,A.* FROM (
+		<foreach collection="list" item="item" index="index" separator="union all">
+			SELECT
+			<!-- 0 -->#{item.createdTime},
+			<!-- 1 -->#{item.updatedTime},
+			<!-- 2 -->#{item.creatorId},
+			<!-- 3 -->#{item.creator},
+			<!-- 4 -->#{item.updaterId},
+			<!-- 5 -->#{item.updater},
+			<!-- 6 -->#{item.lockVersion},
+			<!-- 8 -->#{item.name},
+			<!-- 9 -->#{item.companyLevelId},
+			<!-- 10 -->#{item.starLevel},
+			<!-- 11 -->#{item.identification},
+			<!-- 12 -->#{item.legalPerson},
+			<!-- 13 -->#{item.setUpTime}
+			FROM DUAL
+		</foreach>
+		) A
+    </insert>
+
+    <update id="update">
+        	 update t_company
+        <include refid="updateSetSql"/>
+        where id=#{id} and lock_version=#{lockVersion}
+    </update>
+
+    <sql id="updateSetSql">
+        <set>
+            			<if test="createdTime !=null ">
+			<!-- 0 -->created_time=#{createdTime},
+			</if>
+			<if test="updatedTime !=null ">
+			<!-- 1 -->updated_time=#{updatedTime},
+			</if>
+			<if test="creatorId !=null ">
+			<!-- 2 -->creator_id=#{creatorId},
+			</if>
+			<if test="creator!=null and creator!='' ">
+			<!-- 3 -->creator=#{creator},
+			</if>
+			<if test="updaterId !=null ">
+			<!-- 4 -->updater_id=#{updaterId},
+			</if>
+			<if test="updater!=null and updater!='' ">
+			<!-- 5 -->updater=#{updater},
+			</if>
+			<!-- 6 -->lock_version=#{lockVersion}+1,
+			<if test="name!=null and name!='' ">
+			<!-- 8 -->name=#{name},
+			</if>
+			<if test="companyLevelId !=null ">
+			<!-- 9 -->company_level_id=#{companyLevelId},
+			</if>
+			<if test="starLevel !=null ">
+			<!-- 10 -->star_level=#{starLevel},
+			</if>
+			<if test="identification!=null and identification!='' ">
+			<!-- 11 -->identification=#{identification},
+			</if>
+			<if test="legalPerson!=null and legalPerson!='' ">
+			<!-- 12 -->legal_person=#{legalPerson},
+			</if>
+			<if test="setUpTime !=null ">
+			<!-- 13 -->set_up_time=#{setUpTime}
+			</if>
+
+        </set>
+    </sql>
+
+    <delete id="delete">
+        delete from t_company where id = #{id}
+    </delete>
+
+    <delete id="deleteByIdList">
+        delete from t_company t where t.id in
+        <foreach collection="list" index="dex" item="item" open="("
+                 close=")" separator=",">
+            #{item}
+        </foreach>
+    </delete>
+
+    <select id="findBo" resultMap="CompanyResultMap">
+        select * from t_company where id
+        = #{id}
+    </select>
+
+    <select id="findVo" resultMap="CompanyVoResultMap">
+        select * from t_company where
+        id = #{id}
+    </select>
+
+    <select id="listBoBySo" resultMap="CompanyResultMap">
+        select t.* from t_company t
+        <include refid="soSqlFilter"/>
+        order by id desc
+    </select>
+
+    <select id="listIdBySo" resultType="long">
+        select t.id from t_company t
+        <include refid="soSqlFilter"/>
+    </select>
+
+    <select id="listVoBySo" resultMap="CompanyVoResultMap">
+        select t.* from t_company t
+        <include refid="soSqlFilter"/>
+        order by id desc
+    </select>
+
+    <select id="countBySo" resultType="int">
+        select count(1) from t_company t
+        <include refid="soSqlFilter"/>
+    </select>
+
+    <select id="listVoByIdList" resultMap="CompanyVoResultMap">
+        select * from t_company t where t.id in
+        <foreach collection="list" index="dex" item="item" open="("
+                 close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+
+    <select id="listBoByIdList" resultMap="CompanyResultMap">
+        select * from t_company t where t.id in
+        <foreach collection="list" index="dex" item="item" open="("
+                 close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+
+    <sql id="soSqlFilter">
+        <where>
+            <include refid="soSqlFilterRef"/>
+            			<if test="id !=null ">
+				 and t.id = #{id}
+			</if>
+			<if test="creatorId !=null ">
+				 and t.creator_id = #{creatorId}
+			</if>
+			<if test="creator !=null and creator !='' ">
+				 and t.creator = #{creator}
+			</if>
+			<if test="updaterId !=null ">
+				 and t.updater_id = #{updaterId}
+			</if>
+			<if test="updater !=null and updater !='' ">
+				 and t.updater = #{updater}
+			</if>
+			<if test="name !=null and name !='' ">
+				 and t.name = #{name}
+			</if>
+			<if test="companyLevelId !=null ">
+				 and t.company_level_id = #{companyLevelId}
+			</if>
+			<if test="starLevel !=null ">
+				 and t.star_level = #{starLevel}
+			</if>
+			<if test="identification !=null and identification !='' ">
+				 and t.identification = #{identification}
+			</if>
+			<if test="legalPerson !=null and legalPerson !='' ">
+				 and t.legal_person = #{legalPerson}
+			</if>
+			<if test="setUpTime !=null ">
+				 and t.set_up_time = #{setUpTime}
+			</if>
+			<if test="idList !=null and idList.size() > 0 ">
+				and t.id in
+				<foreach collection="idList" index="dex" item="item" open="("
+					close=")" separator=",">
+					#{item}
+				</foreach>
+			</if>
+
+        </where>
+    </sql>
+    <!-- CRUD end -->
+
+    <!-- business begin -->
+	<sql id="soSqlFilterRef">
+	</sql>
+	<!-- business end -->
+</mapper>

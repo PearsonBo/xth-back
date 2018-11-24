@@ -1,0 +1,41 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/xth?characterEncoding=utf8&useSSL=true
+    username: root
+    password: 111111
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        strategy: org.hibernate.cfg.ImprovedNamingStrategy
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    password:
+    pool:
+      max-active: 200
+      max-wait: -1
+      max-idle: 8
+      min-idle: 0
+    timeout: 0
+login:
+  switch: OFF
+
+file:
+  wechat:
+    upload:
+      path: E:\Project\xingtihui\img\
+
+logging:
+  level:
+    org:
+      springframework:
+        data: DEBUG
+    sample:
+      mybatis:
+        mapper: TRACE
+    com.xth.mapper: debug

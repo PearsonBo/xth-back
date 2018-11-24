@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template version="1.0" type="singleSheet" exportVersion="false">
+    <sheet name="level" nameCN="level">
+        <meta>
+            <column property="name" dataType="string" excelTitleName="等级名称"/>
+            <column property="type" dataType="string" excelTitleName="等级类型"/>
+            <column property="url" dataType="string" excelTitleName="等级图标地址"/>
+
+        </meta>
+        <header>
+        </header>
+    </sheet>
+</template>

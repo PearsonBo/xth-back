@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xth.mapper.coupon.CouponMapper">
+
+    <!-- resultMap begin -->
+    <resultMap type="com.xth.model.bo.coupon.Coupon" id="CouponResultMap">
+        <!-- 0 -->
+        <result property="id" column="id"/>
+        <!-- 1 -->
+        <result property="createdTime" column="created_time"/>
+        <!-- 2 -->
+        <result property="updatedTime" column="updated_time"/>
+        <!-- 3 -->
+        <result property="creatorId" column="creator_id"/>
+        <!-- 4 -->
+        <result property="creator" column="creator"/>
+        <!-- 5 -->
+        <result property="updaterId" column="updater_id"/>
+        <!-- 6 -->
+        <result property="updater" column="updater"/>
+        <!-- 7 -->
+        <result property="lockVersion" column="lock_version"/>
+        <!-- 8 -->
+        <result property="name" column="name"/>
+        <!-- 9 -->
+        <result property="type" column="type"/>
+        <!-- 10 -->
+        <result property="content" column="content"/>
+        <!-- 11 -->
+        <result property="effectTime" column="effect_time"/>
+        <!-- 12 -->
+        <result property="expireTime" column="expire_time"/>
+        <!-- 13 -->
+        <result property="couponApplyScope" column="coupon_apply_scope"/>
+        <!-- 14 -->
+        <result property="applyProvinceId" column="apply_province_id"/>
+        <!-- 15 -->
+        <result property="applyCityId" column="apply_city_id"/>
+        <!-- 16 -->
+        <result property="applyCompanyId" column="apply_company_id"/>
+        <!-- 17 -->
+        <result property="applyStoreId" column="apply_store_id"/>
+        <result property="available" column="available"/>
+        <result property="cityId" column="city_id"/>
+
+    </resultMap>
+
+    <resultMap type="com.xth.model.vo.coupon.CouponVo" id="CouponVoResultMap">
+        <!-- 0 -->
+        <result property="id" column="id"/>
+        <!-- 1 -->
+        <result property="createdTime" column="created_time"/>
+        <!-- 2 -->
+        <result property="updatedTime" column="updated_time"/>
+        <!-- 3 -->
+        <result property="creatorId" column="creator_id"/>
+        <!-- 4 -->
+        <result property="creator" column="creator"/>
+        <!-- 5 -->
+        <result property="updaterId" column="updater_id"/>
+        <!-- 6 -->
+        <result property="updater" column="updater"/>
+        <!-- 7 -->
+        <result property="lockVersion" column="lock_version"/>
+        <!-- 8 -->
+        <result property="name" column="name"/>
+        <!-- 9 -->
+        <result property="type" column="type"/>
+        <!-- 10 -->
+        <result property="content" column="content"/>
+        <!-- 11 -->
+        <result property="effectTime" column="effect_time"/>
+        <!-- 12 -->
+        <result property="expireTime" column="expire_time"/>
+        <!-- 13 -->
+        <result property="couponApplyScope" column="coupon_apply_scope"/>
+        <!-- 14 -->
+        <result property="applyProvinceId" column="apply_province_id"/>
+        <!-- 15 -->
+        <result property="applyCityId" column="apply_city_id"/>
+        <!-- 16 -->
+        <result property="applyCompanyId" column="apply_company_id"/>
+        <!-- 17 -->
+        <result property="applyStoreId" column="apply_store_id"/>
+        <result property="available" column="available"/>
+        <result property="cityId" column="city_id"/>
+    </resultMap>
+    <!-- resultMap end -->
+
+    <!-- CRUD begin -->
+    <insert id="insert">
+        insert into t_coupon(
+        <!-- 0 -->id,
+        <!-- 1 -->created_time,
+        <!-- 2 -->updated_time,
+        <!-- 3 -->creator_id,
+        <!-- 4 -->creator,
+        <!-- 5 -->updater_id,
+        <!-- 6 -->updater,
+        <!-- 7 -->lock_version,
+        <!-- 8 -->name,
+        <!-- 9 -->type,
+        <!-- 10 -->content,
+        <!-- 11 -->effect_time,
+        <!-- 12 -->expire_time,
+        <!-- 13 -->coupon_apply_scope,
+        <!-- 14 -->apply_province_id,
+        <!-- 15 -->apply_city_id,
+        <!-- 16 -->apply_company_id,
+        <!-- 17 -->apply_store_id,
+        <!-- 17 -->available,
+        <!-- 17 -->city_id
+        )
+        values(
+        <!-- 0 -->#{id},
+        <!-- 1 -->#{createdTime},
+        <!-- 2 -->#{updatedTime},
+        <!-- 3 -->#{creatorId},
+        <!-- 4 -->#{creator},
+        <!-- 5 -->#{updaterId},
+        <!-- 6 -->#{updater},
+        <!-- 7 -->#{lockVersion},
+        <!-- 8 -->#{name},
+        <!-- 9 -->#{type},
+        <!-- 10 -->#{content},
+        <!-- 11 -->#{effectTime},
+        <!-- 12 -->#{expireTime},
+        <!-- 13 -->#{couponApplyScope},
+        <!-- 14 -->#{applyProvinceId},
+        <!-- 15 -->#{applyCityId},
+        <!-- 16 -->#{applyCompanyId},
+        <!-- 17 -->#{applyStoreId},
+        <!-- 17 -->#{available},
+        <!-- 17 -->#{cityId}
+        )
+
+    </insert>
+
+    <insert id="batchInsert">
+        insert into t_coupon(
+        <!-- 0 -->id,
+        <!-- 1 -->created_time,
+        <!-- 2 -->updated_time,
+        <!-- 3 -->creator_id,
+        <!-- 4 -->creator,
+        <!-- 5 -->updater_id,
+        <!-- 6 -->updater,
+        <!-- 7 -->lock_version,
+        <!-- 8 -->name,
+        <!-- 9 -->type,
+        <!-- 10 -->content,
+        <!-- 11 -->effect_time,
+        <!-- 12 -->expire_time,
+        <!-- 13 -->coupon_apply_scope,
+        <!-- 14 -->apply_province_id,
+        <!-- 15 -->apply_city_id,
+        <!-- 16 -->apply_company_id,
+        <!-- 17 -->apply_store_id,
+        <!-- 17 -->available,
+        <!-- 17 -->city_id
+        )
+        SELECT t_coupon_seq.NEXTVAL,A.* FROM (
+        <foreach collection="list" item="item" index="index" separator="union all">
+            SELECT
+            <!-- 0 -->#{item.createdTime},
+            <!-- 1 -->#{item.updatedTime},
+            <!-- 2 -->#{item.creatorId},
+            <!-- 3 -->#{item.creator},
+            <!-- 4 -->#{item.updaterId},
+            <!-- 5 -->#{item.updater},
+            <!-- 6 -->#{item.lockVersion},
+            <!-- 7 -->#{item.name},
+            <!-- 8 -->#{item.type},
+            <!-- 9 -->#{item.content},
+            <!-- 10 -->#{item.effectTime},
+            <!-- 11 -->#{item.expireTime},
+            <!-- 12 -->#{item.couponApplyScope},
+            <!-- 13 -->#{item.applyProvinceId},
+            <!-- 14 -->#{item.applyCityId},
+            <!-- 15 -->#{item.applyCompanyId},
+            <!-- 16 -->#{item.applyStoreId},
+            <!-- 16 -->#{item.available},
+            <!-- 16 -->#{item.cityId}
+            FROM DUAL
+        </foreach>
+        ) A
+    </insert>
+
+    <update id="update">
+        update t_coupon
+        <include refid="updateSetSql"/>
+        where id=#{id} and lock_version=#{lockVersion}
+    </update>
+
+    <sql id="updateSetSql">
+        <set>
+            <if test="createdTime !=null ">
+                <!-- 0 -->created_time=#{createdTime},
+            </if>
+            <if test="updatedTime !=null ">
+                <!-- 1 -->updated_time=#{updatedTime},
+            </if>
+            <if test="creatorId !=null ">
+                <!-- 2 -->creator_id=#{creatorId},
+            </if>
+            <if test="creator!=null and creator!='' ">
+                <!-- 3 -->creator=#{creator},
+            </if>
+            <if test="updaterId !=null ">
+                <!-- 4 -->updater_id=#{updaterId},
+            </if>
+            <if test="updater!=null and updater!='' ">
+                <!-- 5 -->updater=#{updater},
+            </if>
+            <!-- 6 -->lock_version=#{lockVersion}+1,
+            <if test="name!=null and name!='' ">
+                <!-- 7 -->name=#{name},
+            </if>
+            <if test="type !=null ">
+                <!-- 8 -->type=#{type},
+            </if>
+            <if test="content!=null and content!='' ">
+                <!-- 9 -->content=#{content},
+            </if>
+            <if test="effectTime !=null ">
+                <!-- 10 -->effect_time=#{effectTime},
+            </if>
+            <if test="expireTime !=null ">
+                <!-- 11 -->expire_time=#{expireTime},
+            </if>
+            <if test="couponApplyScope !=null ">
+                <!-- 12 -->coupon_apply_scope=#{couponApplyScope},
+            </if>
+            <if test="applyProvinceId !=null ">
+                <!-- 13 -->apply_province_id=#{applyProvinceId},
+            </if>
+            <if test="applyCityId !=null ">
+                <!-- 14 -->apply_city_id=#{applyCityId},
+            </if>
+            <if test="applyCompanyId !=null ">
+                <!-- 15 -->apply_company_id=#{applyCompanyId},
+            </if>
+            <if test="applyStoreId !=null ">
+                <!-- 16 -->apply_store_id=#{applyStoreId},
+            </if>
+            <if test="available !=null ">
+                <!-- 16 -->available=#{available},
+            </if>
+            <if test="cityId !=null ">
+                <!-- 16 -->city_id=#{cityId}
+            </if>
+
+        </set>
+    </sql>
+
+    <delete id="delete">
+        delete from t_coupon where id = #{id}
+    </delete>
+
+    <delete id="deleteByIdList">
+        delete from t_coupon t where t.id in
+        <foreach collection="list" index="dex" item="item" open="("
+                 close=")" separator=",">
+            #{item}
+        </foreach>
+    </delete>
+
+    <select id="findBo" resultMap="CouponResultMap">
+        select * from t_coupon where id
+        = #{id}
+    </select>
+
+    <select id="findVo" resultMap="CouponVoResultMap">
+        select * from t_coupon where
+        id = #{id}
+    </select>
+
+    <select id="listBoBySo" resultMap="CouponResultMap">
+        select t.* from t_coupon t
+        <include refid="soSqlFilter"/>
+        order by id desc
+    </select>
+
+    <select id="listIdBySo" resultType="long">
+        select t.id from t_coupon t
+        <include refid="soSqlFilter"/>
+    </select>
+
+    <select id="listVoBySo" resultMap="CouponVoResultMap">
+        select t.* from t_coupon t
+        <include refid="soSqlFilter"/>
+        order by id desc
+    </select>
+
+    <select id="countBySo" resultType="int">
+        select count(1) from t_coupon t
+        <include refid="soSqlFilter"/>
+    </select>
+
+    <select id="listVoByIdList" resultMap="CouponVoResultMap">
+        select * from t_coupon t where t.id in
+        <foreach collection="list" index="dex" item="item" open="("
+                 close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+
+    <select id="listBoByIdList" resultMap="CouponResultMap">
+        select * from t_coupon t where t.id in
+        <foreach collection="list" index="dex" item="item" open="("
+                 close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+
+    <sql id="soSqlFilter">
+        <where>
+            <include refid="soSqlFilterRef"/>
+            <if test="id !=null ">
+                and t.id = #{id}
+            </if>
+            <if test="creatorId !=null ">
+                and t.creator_id = #{creatorId}
+            </if>
+            <if test="creator !=null and creator !='' ">
+                and t.creator = #{creator}
+            </if>
+            <if test="updaterId !=null ">
+                and t.updater_id = #{updaterId}
+            </if>
+            <if test="updater !=null and updater !='' ">
+                and t.updater = #{updater}
+            </if>
+            <if test="name !=null and name !='' ">
+                and t.name = #{name}
+            </if>
+            <if test="type !=null ">
+                and t.type = #{type}
+            </if>
+            <if test="content !=null and content !='' ">
+                and t.content = #{content}
+            </if>
+            <if test="effectTime !=null ">
+                and t.effect_time = #{effectTime}
+            </if>
+            <if test="expireTime !=null ">
+                and t.expire_time = #{expireTime}
+            </if>
+            <if test="couponApplyScope !=null ">
+                and t.coupon_apply_scope = #{couponApplyScope}
+            </if>
+            <if test="applyProvinceId !=null ">
+                and t.apply_province_id = #{applyProvinceId}
+            </if>
+            <if test="applyCityId !=null ">
+                and t.apply_city_id = #{applyCityId}
+            </if>
+            <if test="applyCompanyId !=null ">
+                and t.apply_company_id = #{applyCompanyId}
+            </if>
+            <if test="applyStoreId !=null ">
+                and t.apply_store_id = #{applyStoreId}
+            </if>
+            <if test="available !=null ">
+                and t.available = #{available}
+            </if>
+            <if test="cityId !=null ">
+                and t.city_id = #{cityId}
+            </if>
+            <if test="idList !=null and idList.size() > 0 ">
+                and t.id in
+                <foreach collection="idList" index="dex" item="item" open="("
+                         close=")" separator=",">
+                    #{item}
+                </foreach>
+            </if>
+
+        </where>
+    </sql>
+    <!-- CRUD end -->
+
+    <!-- business begin -->
+    <sql id="soSqlFilterRef">
+        <if test="fuzzyContent !=null and fuzzyContent != ''">
+            and t.name like CONCAT('%',#{fuzzyContent},'%')
+        </if>
+    </sql>
+    <!-- business end -->
+</mapper>

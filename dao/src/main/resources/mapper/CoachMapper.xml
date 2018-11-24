@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xth.mapper.coach.CoachMapper">
+
+    <!-- resultMap begin -->
+    <resultMap type="com.xth.model.bo.coach.Coach" id="CoachResultMap">
+        <!-- 0 -->
+        <result property="id" column="id"/>
+        <!-- 1 -->
+        <result property="createdTime" column="created_time"/>
+        <!-- 2 -->
+        <result property="updatedTime" column="updated_time"/>
+        <!-- 3 -->
+        <result property="creatorId" column="creator_id"/>
+        <!-- 4 -->
+        <result property="creator" column="creator"/>
+        <!-- 5 -->
+        <result property="updaterId" column="updater_id"/>
+        <!-- 6 -->
+        <result property="updater" column="updater"/>
+        <!-- 7 -->
+        <result property="lockVersion" column="lock_version"/>
+        <!-- 8 -->
+        <result property="name" column="name"/>
+        <!-- 9 -->
+        <result property="gender" column="gender"/>
+        <!-- 10 -->
+        <result property="birthYear" column="birth_year"/>
+        <!-- 11 -->
+        <result property="idNumber" column="id_number"/>
+        <!-- 12 -->
+        <result property="phone" column="phone"/>
+        <!-- 13 -->
+        <result property="storeId" column="store_id"/>
+        <!-- 14 -->
+        <result property="speciality" column="speciality"/>
+        <!-- 15 -->
+        <result property="imgUrl" column="img_url"/>
+        <!-- 16 -->
+        <result property="coachLevelId" column="coach_level_id"/>
+        <!-- 17 -->
+        <result property="starLevel" column="star_level"/>
+        <!-- 18 -->
+        <result property="isGold" column="is_gold"/>
+        <!-- 19 -->
+        <result property="goldLevel" column="gold_level"/>
+        <!-- 20 -->
+        <result property="sortIndex" column="sort_index"/>
+        <!-- 21 -->
+        <result property="teachAge" column="teach_age"/>
+        <!-- 22 -->
+        <result property="startYear" column="start_year"/>
+        <!-- 23 -->
+        <result property="awardNum" column="award_num"/>
+        <!-- 24 -->
+        <result property="ccieNum" column="ccie_num"/>
+        <result property="classNum" column="class_num"/>
+        <result property="cityId" column="city_id"/>
+
+    </resultMap>
+
+    <resultMap type="com.xth.model.vo.coach.CoachVo" id="CoachVoResultMap">
+        <!-- 0 -->
+        <result property="id" column="id"/>
+        <!-- 1 -->
+        <result property="createdTime" column="created_time"/>
+        <!-- 2 -->
+        <result property="updatedTime" column="updated_time"/>
+        <!-- 3 -->
+        <result property="creatorId" column="creator_id"/>
+        <!-- 4 -->
+        <result property="creator" column="creator"/>
+        <!-- 5 -->
+        <result property="updaterId" column="updater_id"/>
+        <!-- 6 -->
+        <result property="updater" column="updater"/>
+        <!-- 7 -->
+        <result property="lockVersion" column="lock_version"/>
+        <!-- 8 -->
+        <result property="name" column="name"/>
+        <!-- 9 -->
+        <result property="gender" column="gender"/>
+        <!-- 10 -->
+        <result property="birthYear" column="birth_year"/>
+        <!-- 11 -->
+        <result property="idNumber" column="id_number"/>
+        <!-- 12 -->
+        <result property="phone" column="phone"/>
+        <!-- 13 -->
+        <result property="storeId" column="store_id"/>
+        <!-- 14 -->
+        <result property="speciality" column="speciality"/>
+        <!-- 15 -->
+        <result property="imgUrl" column="img_url"/>
+        <!-- 16 -->
+        <result property="coachLevelId" column="coach_level_id"/>
+        <!-- 17 -->
+        <result property="starLevel" column="star_level"/>
+        <!-- 18 -->
+        <result property="isGold" column="is_gold"/>
+        <!-- 19 -->
+        <result property="goldLevel" column="gold_level"/>
+        <!-- 20 -->
+        <result property="sortIndex" column="sort_index"/>
+        <!-- 21 -->
+        <result property="teachAge" column="teach_age"/>
+        <!-- 22 -->
+        <result property="startYear" column="start_year"/>
+        <!-- 23 -->
+        <result property="awardNum" column="award_num"/>
+        <!-- 24 -->
+        <result property="ccieNum" column="ccie_num"/>
+        <result property="classNum" column="class_num"/>
+        <result property="cityId" column="city_id"/>
+    </resultMap>
+    <!-- resultMap end -->
+
+    <!-- CRUD begin -->
+    <insert id="insert">
+        insert into t_coach(
+        <!-- 0 -->id,
+        <!-- 1 -->created_time,
+        <!-- 2 -->updated_time,
+        <!-- 3 -->creator_id,
+        <!-- 4 -->creator,
+        <!-- 5 -->updater_id,
+        <!-- 6 -->updater,
+        <!-- 7 -->lock_version,
+        <!-- 8 -->name,
+        <!-- 9 -->gender,
+        <!-- 10 -->birth_year,
+        <!-- 11 -->id_number,
+        <!-- 12 -->phone,
+        <!-- 13 -->store_id,
+        <!-- 14 -->speciality,
+        <!-- 15 -->img_url,
+        <!-- 16 -->coach_level_id,
+        <!-- 17 -->star_level,
+        <!-- 18 -->is_gold,
+        <!-- 19 -->gold_level,
+        <!-- 20 -->sort_index,
+        <!-- 21 -->teach_age,
+        <!-- 22 -->start_year,
+        <!-- 23 -->award_num,
+        <!-- 24 -->ccie_num,
+        <!-- 24 -->class_num,
+        <!-- 24 -->city_id
+        )
+        values(
+        <!-- 0 -->#{id},
+        <!-- 1 -->#{createdTime},
+        <!-- 2 -->#{updatedTime},
+        <!-- 3 -->#{creatorId},
+        <!-- 4 -->#{creator},
+        <!-- 5 -->#{updaterId},
+        <!-- 6 -->#{updater},
+        <!-- 7 -->#{lockVersion},
+        <!-- 8 -->#{name},
+        <!-- 9 -->#{gender},
+        <!-- 10 -->#{birthYear},
+        <!-- 11 -->#{idNumber},
+        <!-- 12 -->#{phone},
+        <!-- 13 -->#{storeId},
+        <!-- 14 -->#{speciality},
+        <!-- 15 -->#{imgUrl},
+        <!-- 16 -->#{coachLevelId},
+        <!-- 17 -->#{starLevel},
+        <!-- 18 -->#{isGold},
+        <!-- 19 -->#{goldLevel},
+        <!-- 20 -->#{sortIndex},
+        <!-- 21 -->#{teachAge},
+        <!-- 22 -->#{startYear},
+        <!-- 23 -->#{awardNum},
+        <!-- 24 -->#{ccieNum},
+        <!-- 24 -->#{classNum},
+        <!-- 24 -->#{cityId}
+        )
+
+    </insert>
+
+    <insert id="batchInsert">
+        insert into t_coach(
+        <!-- 0 -->id,
+        <!-- 1 -->created_time,
+        <!-- 2 -->updated_time,
+        <!-- 3 -->creator_id,
+        <!-- 4 -->creator,
+        <!-- 5 -->updater_id,
+        <!-- 6 -->updater,
+        <!-- 7 -->lock_version,
+        <!-- 8 -->name,
+        <!-- 9 -->gender,
+        <!-- 10 -->birth_year,
+        <!-- 11 -->id_number,
+        <!-- 12 -->phone,
+        <!-- 13 -->store_id,
+        <!-- 14 -->speciality,
+        <!-- 15 -->img_url,
+        <!-- 16 -->coach_level_id,
+        <!-- 17 -->star_level,
+        <!-- 18 -->is_gold,
+        <!-- 19 -->gold_level,
+        <!-- 20 -->sort_index,
+        <!-- 21 -->teach_age,
+        <!-- 22 -->start_year,
+        <!-- 23 -->award_num,
+        <!-- 24 -->ccie_num,
+        <!-- 24 -->class_num,
+        <!-- 24 -->city_id
+        )
+        SELECT t_coach_seq.NEXTVAL,A.* FROM (
+        <foreach collection="list" item="item" index="index" separator="union all">
+            SELECT
+            <!-- 0 -->#{item.createdTime},
+            <!-- 1 -->#{item.updatedTime},
+            <!-- 2 -->#{item.creatorId},
+            <!-- 3 -->#{item.creator},
+            <!-- 4 -->#{item.updaterId},
+            <!-- 5 -->#{item.updater},
+            <!-- 6 -->#{item.lockVersion},
+            <!-- 7 -->#{item.name},
+            <!-- 8 -->#{item.gender},
+            <!-- 9 -->#{item.birthYear},
+            <!-- 10 -->#{item.idNumber},
+            <!-- 11 -->#{item.phone},
+            <!-- 12 -->#{item.storeId},
+            <!-- 13 -->#{item.speciality},
+            <!-- 14 -->#{item.imgUrl},
+            <!-- 15 -->#{item.coachLevelId},
+            <!-- 16 -->#{item.starLevel},
+            <!-- 17 -->#{item.isGold},
+            <!-- 18 -->#{item.goldLevel},
+            <!-- 19 -->#{item.sortIndex},
+            <!-- 20 -->#{item.teachAge},
+            <!-- 21 -->#{item.startYear},
+            <!-- 22 -->#{item.awardNum},
+            <!-- 23 -->#{item.ccieNum},
+            <!-- 23 -->#{item.classNum},
+            <!-- 23 -->#{item.cityId}
+            FROM DUAL
+        </foreach>
+        ) A
+    </insert>
+
+    <update id="update">
+        update t_coach
+        <include refid="updateSetSql"/>
+        where id=#{id} and lock_version=#{lockVersion}
+    </update>
+
+    <sql id="updateSetSql">
+        <set>
+            <if test="createdTime !=null ">
+                <!-- 0 -->created_time=#{createdTime},
+            </if>
+            <if test="updatedTime !=null ">
+                <!-- 1 -->updated_time=#{updatedTime},
+            </if>
+            <if test="creatorId !=null ">
+                <!-- 2 -->creator_id=#{creatorId},
+            </if>
+            <if test="creator!=null and creator!='' ">
+                <!-- 3 -->creator=#{creator},
+            </if>
+            <if test="updaterId !=null ">
+                <!-- 4 -->updater_id=#{updaterId},
+            </if>
+            <if test="updater!=null and updater!='' ">
+                <!-- 5 -->updater=#{updater},
+            </if>
+            <!-- 6 -->lock_version=#{lockVersion}+1,
+            <if test="name!=null and name!='' ">
+                <!-- 7 -->name=#{name},
+            </if>
+            <if test="gender!=null and gender!='' ">
+                <!-- 8 -->gender=#{gender},
+            </if>
+            <if test="birthYear !=null ">
+                <!-- 9 -->birth_year=#{birthYear},
+            </if>
+            <if test="idNumber!=null and idNumber!='' ">
+                <!-- 10 -->id_number=#{idNumber},
+            </if>
+            <if test="phone!=null and phone!='' ">
+                <!-- 11 -->phone=#{phone},
+            </if>
+            <if test="storeId !=null ">
+                <!-- 12 -->store_id=#{storeId},
+            </if>
+            <if test="speciality!=null and speciality!='' ">
+                <!-- 13 -->speciality=#{speciality},
+            </if>
+            <if test="imgUrl!=null and imgUrl!='' ">
+                <!-- 14 -->img_url=#{imgUrl},
+            </if>
+            <if test="coachLevelId !=null ">
+                <!-- 15 -->coach_level_id=#{coachLevelId},
+            </if>
+            <if test="starLevel !=null ">
+                <!-- 16 -->star_level=#{starLevel},
+            </if>
+            <if test="isGold !=null ">
+                <!-- 17 -->is_gold=#{isGold},
+            </if>
+            <if test="goldLevel!=null and goldLevel!='' ">
+                <!-- 18 -->gold_level=#{goldLevel},
+            </if>
+            <if test="sortIndex!=null and sortIndex!='' ">
+                <!-- 19 -->sort_index=#{sortIndex},
+            </if>
+            <if test="teachAge !=null ">
+                <!-- 20 -->teach_age=#{teachAge},
+            </if>
+            <if test="startYear !=null ">
+                <!-- 21 -->start_year=#{startYear},
+            </if>
+            <if test="awardNum !=null ">
+                <!-- 22 -->award_num=#{awardNum},
+            </if>
+            <if test="ccieNum!=null and ccieNum!='' ">
+                <!-- 23 -->ccie_num=#{ccieNum},
+            </if>
+            <if test="classNum!=null and classNum!='' ">
+                <!-- 23 -->class_num=#{classNum},
+            </if>
+            <if test="cityId!=null ">
+                <!-- 23 -->city_id=#{cityId}
+            </if>
+
+        </set>
+    </sql>
+
+    <delete id="delete">
+        delete from t_coach where id = #{id}
+    </delete>
+
+    <delete id="deleteByIdList">
+        delete from t_coach t where t.id in
+        <foreach collection="list" index="dex" item="item" open="("
+                 close=")" separator=",">
+            #{item}
+        </foreach>
+    </delete>
+
+    <select id="findBo" resultMap="CoachResultMap">
+        select * from t_coach where id
+        = #{id}
+    </select>
+
+    <select id="findVo" resultMap="CoachVoResultMap">
+        select * from t_coach where
+        id = #{id}
+    </select>
+
+    <select id="listBoBySo" resultMap="CoachResultMap">
+        select t.* from t_coach t
+        left join t_store s on t.store_id = s.id
+        <include refid="soSqlFilter"/>
+        order by id desc
+    </select>
+
+    <select id="listIdBySo" resultType="long">
+        select t.id from t_coach t
+        <include refid="soSqlFilter"/>
+    </select>
+
+    <select id="listVoBySo" resultMap="CoachVoResultMap">
+        select t.* from t_coach t
+        left join t_store s on t.store_id = s.id
+        <include refid="soSqlFilter"/>
+        order by id desc
+    </select>
+
+    <select id="countBySo" resultType="int">
+        select count(1) from t_coach t
+        left join t_store s on t.store_id = s.id
+        <include refid="soSqlFilter"/>
+    </select>
+
+    <select id="listVoByIdList" resultMap="CoachVoResultMap">
+        select * from t_coach t where t.id in
+        <foreach collection="list" index="dex" item="item" open="("
+                 close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+
+    <select id="listBoByIdList" resultMap="CoachResultMap">
+        select * from t_coach t where t.id in
+        <foreach collection="list" index="dex" item="item" open="("
+                 close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+
+    <sql id="soSqlFilter">
+        <where>
+            <include refid="soSqlFilterRef"/>
+            <if test="id !=null ">
+                and t.id = #{id}
+            </if>
+            <if test="creatorId !=null ">
+                and t.creator_id = #{creatorId}
+            </if>
+            <if test="creator !=null and creator !='' ">
+                and t.creator = #{creator}
+            </if>
+            <if test="updaterId !=null ">
+                and t.updater_id = #{updaterId}
+            </if>
+            <if test="updater !=null and updater !='' ">
+                and t.updater = #{updater}
+            </if>
+            <if test="name !=null and name !='' ">
+                and t.name = #{name}
+            </if>
+            <if test="gender !=null and gender !='' ">
+                and t.gender = #{gender}
+            </if>
+            <if test="birthYear !=null ">
+                and t.birth_year = #{birthYear}
+            </if>
+            <if test="idNumber !=null and idNumber !='' ">
+                and t.id_number = #{idNumber}
+            </if>
+            <if test="phone !=null and phone !='' ">
+                and t.phone = #{phone}
+            </if>
+            <if test="storeId !=null ">
+                and t.store_id = #{storeId}
+            </if>
+            <if test="speciality !=null and speciality !='' ">
+                and t.speciality = #{speciality}
+            </if>
+            <if test="imgUrl !=null and imgUrl !='' ">
+                and t.img_url = #{imgUrl}
+            </if>
+            <if test="coachLevelId !=null ">
+                and t.coach_level_id = #{coachLevelId}
+            </if>
+            <if test="starLevel !=null ">
+                and t.star_level = #{starLevel}
+            </if>
+            <if test="isGold !=null ">
+                and t.is_gold = #{isGold}
+            </if>
+            <if test="goldLevel !=null and goldLevel !='' ">
+                and t.gold_level = #{goldLevel}
+            </if>
+            <if test="sortIndex !=null and sortIndex !='' ">
+                and t.sort_index = #{sortIndex}
+            </if>
+            <if test="teachAge !=null ">
+                and t.teach_age = #{teachAge}
+            </if>
+            <if test="startYear !=null ">
+                and t.start_year = #{startYear}
+            </if>
+            <if test="awardNum !=null ">
+                and t.award_num = #{awardNum}
+            </if>
+            <if test="ccieNum !=null and ccieNum !='' ">
+                and t.ccie_num = #{ccieNum}
+            </if>
+            <if test="cityId !=null">
+                and t.city_id = #{cityId}
+            </if>
+
+            <if test="classNum!=null and classNum!='' ">
+                and t.class_num=#{classNum}
+            </if>
+            <if test="idList !=null and idList.size() > 0 ">
+                and t.id in
+                <foreach collection="idList" index="dex" item="item" open="("
+                         close=")" separator=",">
+                    #{item}
+                </foreach>
+            </if>
+
+        </where>
+    </sql>
+    <!-- CRUD end -->
+
+    <!-- business begin -->
+    <sql id="soSqlFilterRef">
+        <if test="fuzzyContent !=null and fuzzyContent != ''">
+            and t.name like CONCAT('%',#{fuzzyContent},'%') or s.name like CONCAT('%',#{fuzzyContent},'%')
+        </if>
+    </sql>
+    <!-- business end -->
+</mapper>

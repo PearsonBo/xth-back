@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template version="1.0" type="singleSheet" exportVersion="false">
+    <sheet name="client" nameCN="client">
+        <meta>
+            <column property="nickname" dataType="string" excelTitleName="昵称"/>
+            <column property="username" dataType="string" excelTitleName="真实姓名"/>
+            <column property="gender" dataType="string" excelTitleName="性别"/>
+            <column property="idNumber" dataType="string" excelTitleName="身份证号"/>
+            <column property="couponIds" dataType="string" excelTitleName="已领优惠券的ID集合,已|分割"/>
+            <column property="clientLevelId" dataType="string" excelTitleName="客户会员等级id"/>
+            <column property="loginNum" dataType="string" excelTitleName="累积登录次数"/>
+            <column property="lastLoginTime" dataType="string" excelTitleName="最后一次登录时间"/>
+
+        </meta>
+        <header>
+        </header>
+    </sheet>
+</template>

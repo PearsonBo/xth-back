@@ -1,0 +1,52 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: wechat-app
+server:
+  port: 9090
+
+mybatis:
+    configuration:
+        #开启驼峰转换
+        mapUnderscoreToCamelCase: true
+        #当JDBC类型为空时, 某些驱动程序要指定值 default:OTHER, 插入空值时不需要指定类型
+        jdbcTypeForNull: "NULL"
+        #使全局的映射器启用或禁用缓存
+        cacheEnabled: false
+        log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+    #该属性可以给包中的类注册别名，注册后可以直接使用类名，而不用使用全限定的类名
+    typeAliasesPackage: com.xth.model
+    #sqlSessionFactory会自动扫描该路径下的所有文件并解析
+    mapper-locations: classpath:mapper/*.xml
+    #ExecutorType.SIMPLE
+    #这个类型不做特殊的事情，它只为每个语句创建一个PreparedStatement。
+    #ExecutorType.REUSE
+    #这种类型将重复使用PreparedStatements。
+    #ExecutorType.BATCH
+    #这个类型批量更新，且必要地区别开其中的select 语句，确保动作易于理解。
+    executorType: REUSE
+
+
+
+#gitHub上的的物理分页插件（默认参数：offsetAsPageNum、rowBoundsWithCount、pageSizeZero、autoRuntimeDialect、closeConn）
+pagehelper:
+    #分页插件会自动检测当前的数据库链接，自动选择合适的分页方式。 你可以配置helperDialect属性来指定分页插件使用哪种方言。配置时，可以使用下面的缩写值：
+    # 　　　　oracle,mysql,mariadb,sqlite,hsqldb,postgresql,db2,sqlserver,informix,h2,sqlserver2012,derby
+    helperDialect: mysql
+    #分页合理化参数，默认值为false。当该参数设置为 true 时，pageNum<=0 时会查询第一页，pageNum>pages（超过总数时），会查询最后一页。
+    #默认false 时，直接根据参数进行查询
+    reasonable: false
+    #支持通过 Mapper 接口参数来传递分页参数，默认值false，分页插件会从查询方法的参数值中，自动根据上面 params 配置的字段中取值，
+    #查找到合适的值时就会自动分页。 使用方法可以参考测试代码中的 com.github.pagehelper.test.basic 包下的 ArgumentsMapTest 和 ArgumentsObjTest。
+    supportMethodsArguments: true
+    #为了支持startPage(Object params)方法，增加了该参数来配置参数映射，用于从对象中根据属性名取值，
+    #可以配置 pageNum,pageSize,count,pageSizeZero,reasonable，不配置映射的用默认值，
+    #默认值为pageNum=pageNum;pageSize=pageSize;count=countSql;reasonable=reasonable;pageSizeZero=pageSizeZero。
+    params: count=countSql
+    offsetAsPageNum: true
+wechat:
+  appId: xxxxxx
+  appSecret: xxxxxxx
+  loginurl: https://api.weixin.qq.com/sns/jscode2session
+  encryptKey: xth123

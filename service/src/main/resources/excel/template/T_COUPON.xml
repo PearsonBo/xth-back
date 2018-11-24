@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template version="1.0" type="singleSheet" exportVersion="false">
+    <sheet name="coupon" nameCN="coupon">
+        <meta>
+            <column property="name" dataType="string" excelTitleName="活动名称"/>
+            <column property="content" dataType="string" excelTitleName="活动内容"/>
+            <column property="effectTime" dataType="string" excelTitleName="生效时间"/>
+            <column property="expireTime" dataType="string" excelTitleName="过期时间"/>
+            <column property="couponApplyScope" dataType="string" excelTitleName="适用范围"/>
+            <column property="applyProvinceId" dataType="string" excelTitleName="适用的省份id，只要在适用范围是某个省份才有值"/>
+            <column property="applyCityId" dataType="string" excelTitleName="适用的城市id，只要在适用范围是某个城市才有值"/>
+            <column property="applyCompanyId" dataType="string" excelTitleName="适用的商户id，只要在适用范围是某个商户才有值"/>
+            <column property="applyStoreId" dataType="string" excelTitleName="适用的场馆id，只要在适用范围是某个场馆才有值"/>
+
+        </meta>
+        <header>
+        </header>
+    </sheet>
+</template>

@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xth.mapper.rebate.RebateMapper">
+
+    <!-- resultMap begin -->
+    <resultMap type="com.xth.model.bo.rebate.Rebate" id="RebateResultMap">
+        <!-- 0 -->
+        <result property="id" column="id"/>
+        <!-- 1 -->
+        <result property="createdTime" column="created_time"/>
+        <!-- 2 -->
+        <result property="updatedTime" column="updated_time"/>
+        <!-- 3 -->
+        <result property="creatorId" column="creator_id"/>
+        <!-- 4 -->
+        <result property="creator" column="creator"/>
+        <!-- 5 -->
+        <result property="updaterId" column="updater_id"/>
+        <!-- 6 -->
+        <result property="updater" column="updater"/>
+        <!-- 7 -->
+        <result property="lockVersion" column="lock_version"/>
+        <!-- 8 -->
+        <result property="clientId" column="client_id"/>
+        <!-- 9 -->
+        <result property="storeId" column="store_id"/>
+        <!-- 10 -->
+        <result property="consumeMoney" column="consume_money"/>
+        <!-- 11 -->
+        <result property="returnMoney" column="return_money"/>
+        <!-- 12 -->
+        <result property="couponId" column="coupon_id"/>
+        <!-- 13 -->
+        <result property="attachment" column="attachment"/>
+        <!-- 14 -->
+        <result property="status" column="status"/>
+
+    </resultMap>
+
+    <resultMap type="com.xth.model.vo.rebate.RebateVo" id="RebateVoResultMap">
+        <!-- 0 -->
+        <result property="id" column="id"/>
+        <!-- 1 -->
+        <result property="createdTime" column="created_time"/>
+        <!-- 2 -->
+        <result property="updatedTime" column="updated_time"/>
+        <!-- 3 -->
+        <result property="creatorId" column="creator_id"/>
+        <!-- 4 -->
+        <result property="creator" column="creator"/>
+        <!-- 5 -->
+        <result property="updaterId" column="updater_id"/>
+        <!-- 6 -->
+        <result property="updater" column="updater"/>
+        <!-- 7 -->
+        <result property="lockVersion" column="lock_version"/>
+        <!-- 8 -->
+        <result property="clientId" column="client_id"/>
+        <!-- 9 -->
+        <result property="storeId" column="store_id"/>
+        <!-- 10 -->
+        <result property="consumeMoney" column="consume_money"/>
+        <!-- 11 -->
+        <result property="returnMoney" column="return_money"/>
+        <!-- 12 -->
+        <result property="couponId" column="coupon_id"/>
+        <!-- 13 -->
+        <result property="attachment" column="attachment"/>
+        <!-- 14 -->
+        <result property="status" column="status"/>
+
+    </resultMap>
+    <!-- resultMap end -->
+
+    <!-- CRUD begin -->
+    <insert id="insert">
+        insert into t_rebate(
+        <!-- 0 -->id,
+        <!-- 1 -->created_time,
+        <!-- 2 -->updated_time,
+        <!-- 3 -->creator_id,
+        <!-- 4 -->creator,
+        <!-- 5 -->updater_id,
+        <!-- 6 -->updater,
+        <!-- 7 -->lock_version,
+        <!-- 8 -->client_id,
+        <!-- 9 -->store_id,
+        <!-- 10 -->consume_money,
+        <!-- 11 -->return_money,
+        <!-- 12 -->coupon_id,
+        <!-- 13 -->attachment,
+        <!-- 14 -->status
+        )
+        values(
+        <!-- 0 -->#{id},
+        <!-- 1 -->#{createdTime},
+        <!-- 2 -->#{updatedTime},
+        <!-- 3 -->#{creatorId},
+        <!-- 4 -->#{creator},
+        <!-- 5 -->#{updaterId},
+        <!-- 6 -->#{updater},
+        <!-- 7 -->#{lockVersion},
+        <!-- 8 -->#{clientId},
+        <!-- 9 -->#{storeId},
+        <!-- 10 -->#{consumeMoney},
+        <!-- 11 -->#{returnMoney},
+        <!-- 12 -->#{couponId},
+        <!-- 13 -->#{attachment},
+        <!-- 14 -->#{status}
+        )
+
+    </insert>
+
+    <insert id="batchInsert">
+        insert into t_rebate(
+        <!-- 0 -->id,
+        <!-- 1 -->created_time,
+        <!-- 2 -->updated_time,
+        <!-- 3 -->creator_id,
+        <!-- 4 -->creator,
+        <!-- 5 -->updater_id,
+        <!-- 6 -->updater,
+        <!-- 7 -->lock_version,
+        <!-- 8 -->client_id,
+        <!-- 9 -->store_id,
+        <!-- 10 -->consume_money,
+        <!-- 11 -->return_money,
+        <!-- 12 -->coupon_id,
+        <!-- 13 -->attachment,
+        <!-- 14 -->status
+        )
+        SELECT t_rebate_seq.NEXTVAL,A.* FROM (
+        <foreach collection="list" item="item" index="index" separator="union all">
+            SELECT
+            <!-- 0 -->#{item.createdTime},
+            <!-- 1 -->#{item.updatedTime},
+            <!-- 2 -->#{item.creatorId},
+            <!-- 3 -->#{item.creator},
+            <!-- 4 -->#{item.updaterId},
+            <!-- 5 -->#{item.updater},
+            <!-- 6 -->#{item.lockVersion},
+            <!-- 7 -->#{item.clientId},
+            <!-- 8 -->#{item.storeId},
+            <!-- 9 -->#{item.consumeMoney},
+            <!-- 10 -->#{item.returnMoney},
+            <!-- 11 -->#{item.couponId},
+            <!-- 12 -->#{item.attachment},
+            <!-- 13 -->#{item.status}
+            FROM DUAL
+        </foreach>
+        ) A
+    </insert>
+
+    <update id="update">
+        update t_rebate
+        <include refid="updateSetSql"/>
+        where id=#{id} and lock_version=#{lockVersion}
+    </update>
+
+    <sql id="updateSetSql">
+        <set>
+            <if test="createdTime !=null ">
+                <!-- 0 -->created_time=#{createdTime},
+            </if>
+            <if test="updatedTime !=null ">
+                <!-- 1 -->updated_time=#{updatedTime},
+            </if>
+            <if test="creatorId !=null ">
+                <!-- 2 -->creator_id=#{creatorId},
+            </if>
+            <if test="creator!=null and creator!='' ">
+                <!-- 3 -->creator=#{creator},
+            </if>
+            <if test="updaterId !=null ">
+                <!-- 4 -->updater_id=#{updaterId},
+            </if>
+            <if test="updater!=null and updater!='' ">
+                <!-- 5 -->updater=#{updater},
+            </if>
+            <!-- 6 -->lock_version=#{lockVersion}+1,
+            <if test="clientId !=null ">
+                <!-- 7 -->client_id=#{clientId},
+            </if>
+            <if test="storeId !=null ">
+                <!-- 8 -->store_id=#{storeId},
+            </if>
+            <if test="consumeMoney !=null ">
+                <!-- 9 -->consume_money=#{consumeMoney},
+            </if>
+            <if test="returnMoney !=null ">
+                <!-- 10 -->return_money=#{returnMoney},
+            </if>
+            <if test="couponId !=null ">
+                <!-- 11 -->coupon_id=#{couponId},
+            </if>
+            <if test="attachment!=null and attachment!='' ">
+                <!-- 12 -->attachment=#{attachment},
+            </if>
+            <if test="status !=null ">
+                <!-- 13 -->status=#{status}
+            </if>
+
+        </set>
+    </sql>
+
+    <delete id="delete">
+        delete from t_rebate where id = #{id}
+    </delete>
+
+    <delete id="deleteByIdList">
+        delete from t_rebate t where t.id in
+        <foreach collection="list" index="dex" item="item" open="("
+                 close=")" separator=",">
+            #{item}
+        </foreach>
+    </delete>
+
+    <select id="findBo" resultMap="RebateResultMap">
+        select * from t_rebate where id
+        = #{id}
+    </select>
+
+    <select id="findVo" resultMap="RebateVoResultMap">
+        select * from t_rebate where
+        id = #{id}
+    </select>
+
+    <select id="listBoBySo" resultMap="RebateResultMap">
+        select t.* from t_rebate t
+        <include refid="soSqlFilter"/>
+        order by id desc
+    </select>
+
+    <select id="listIdBySo" resultType="long">
+        select t.id from t_rebate t
+        <include refid="soSqlFilter"/>
+    </select>
+
+    <select id="listVoBySo" resultMap="RebateVoResultMap">
+        select t.* from t_rebate t
+        <include refid="soSqlFilter"/>
+        order by id desc
+    </select>
+
+    <select id="countBySo" resultType="int">
+        select count(1) from t_rebate t
+        <include refid="soSqlFilter"/>
+    </select>
+
+    <select id="listVoByIdList" resultMap="RebateVoResultMap">
+        select * from t_rebate t where t.id in
+        <foreach collection="list" index="dex" item="item" open="("
+                 close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+
+    <select id="listBoByIdList" resultMap="RebateResultMap">
+        select * from t_rebate t where t.id in
+        <foreach collection="list" index="dex" item="item" open="("
+                 close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+
+    <sql id="soSqlFilter">
+        <where>
+            <include refid="soSqlFilterRef"/>
+            <if test="id !=null ">
+                and t.id = #{id}
+            </if>
+            <if test="creatorId !=null ">
+                and t.creator_id = #{creatorId}
+            </if>
+            <if test="creator !=null and creator !='' ">
+                and t.creator = #{creator}
+            </if>
+            <if test="updaterId !=null ">
+                and t.updater_id = #{updaterId}
+            </if>
+            <if test="updater !=null and updater !='' ">
+                and t.updater = #{updater}
+            </if>
+            <if test="clientId !=null ">
+                and t.client_id = #{clientId}
+            </if>
+            <if test="storeId !=null ">
+                and t.store_id = #{storeId}
+            </if>
+            <if test="consumeMoney !=null ">
+                and t.consume_money = #{consumeMoney}
+            </if>
+            <if test="returnMoney !=null ">
+                and t.return_money = #{returnMoney}
+            </if>
+            <if test="couponId !=null ">
+                and t.coupon_id = #{couponId}
+            </if>
+            <if test="attachment !=null and attachment !='' ">
+                and t.attachment = #{attachment}
+            </if>
+            <if test="status !=null ">
+                and t.status = #{status}
+            </if>
+            <if test="idList !=null and idList.size() > 0 ">
+                and t.id in
+                <foreach collection="idList" index="dex" item="item" open="("
+                         close=")" separator=",">
+                    #{item}
+                </foreach>
+            </if>
+
+        </where>
+    </sql>
+    <!-- CRUD end -->
+
+    <!-- business begin -->
+    <sql id="soSqlFilterRef">
+    </sql>
+    <!-- business end -->
+</mapper>

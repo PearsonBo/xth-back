@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template version="1.0" type="singleSheet" exportVersion="false">
+    <sheet name="company"  nameCN="company">
+        <meta>
+			<column property="name" dataType="string" excelTitleName="商户公司营业执照名称" />
+			<column property="companyLevelId" dataType="string" excelTitleName="商户等级ID" />
+			<column property="starLevel" dataType="string" excelTitleName="商户星级" />
+			<column property="identification" dataType="string" excelTitleName="纳税人识别号" />
+			<column property="legalPerson" dataType="string" excelTitleName="法人" />
+			<column property="setUpTime" dataType="string" excelTitleName="成立时间" />
+
+        </meta>
+        <header>
+        </header>
+    </sheet>
+</template>

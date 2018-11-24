@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template version="1.0" type="singleSheet" exportVersion="false">
+    <sheet name="article" nameCN="article">
+        <meta>
+            <column property="title" dataType="string" excelTitleName="内容标题"/>
+            <column property="slug" dataType="string" excelTitleName="内容缩略名"/>
+            <column property="authorId" dataType="string" excelTitleName="作者id"/>
+            <column property="imgUrl" dataType="string" excelTitleName="图片url"/>
+            <column property="isHot" dataType="string" excelTitleName="是否热门推荐,0:否，1：是"/>
+            <column property="status" dataType="string" excelTitleName="文章状态"/>
+            <column property="hits" dataType="string" excelTitleName="点击次数"/>
+            <column property="content" dataType="string" excelTitleName="内容"/>
+
+        </meta>
+        <header>
+        </header>
+    </sheet>
+</template>

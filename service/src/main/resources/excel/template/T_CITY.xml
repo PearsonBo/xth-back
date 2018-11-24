@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template version="1.0" type="singleSheet" exportVersion="false">
+    <sheet name="city" nameCN="city">
+        <meta>
+            <column property="type" dataType="string" excelTitleName="类型，1：省份或者直辖市，2：城市"/>
+            <column property="name" dataType="string" excelTitleName="名称"/>
+            <column property="shortName" dataType="string" excelTitleName="简称"/>
+
+        </meta>
+        <header>
+        </header>
+    </sheet>
+</template>

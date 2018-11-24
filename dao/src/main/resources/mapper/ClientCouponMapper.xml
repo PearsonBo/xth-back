@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xth.mapper.client.ClientCouponMapper">
+
+    <!-- resultMap begin -->
+    <resultMap type="com.xth.model.bo.client.ClientCoupon" id="ClientCouponResultMap">
+        <!-- 0 -->
+        <result property="id" column="id"/>
+        <!-- 1 -->
+        <result property="createdTime" column="created_time"/>
+        <!-- 2 -->
+        <result property="updatedTime" column="updated_time"/>
+        <!-- 3 -->
+        <result property="creatorId" column="creator_id"/>
+        <!-- 4 -->
+        <result property="creator" column="creator"/>
+        <!-- 5 -->
+        <result property="updaterId" column="updater_id"/>
+        <!-- 6 -->
+        <result property="updater" column="updater"/>
+        <!-- 7 -->
+        <result property="lockVersion" column="lock_version"/>
+        <!-- 8 -->
+        <result property="clientId" column="client_id"/>
+        <!-- 9 -->
+        <result property="couponId" column="coupon_id"/>
+        <!-- 10 -->
+        <result property="isUsed" column="is_used"/>
+        <!-- 11 -->
+        <result property="available" column="available"/>
+
+    </resultMap>
+
+    <resultMap type="com.xth.model.vo.client.ClientCouponVo" id="ClientCouponVoResultMap">
+        <!-- 0 -->
+        <result property="id" column="id"/>
+        <!-- 1 -->
+        <result property="createdTime" column="created_time"/>
+        <!-- 2 -->
+        <result property="updatedTime" column="updated_time"/>
+        <!-- 3 -->
+        <result property="creatorId" column="creator_id"/>
+        <!-- 4 -->
+        <result property="creator" column="creator"/>
+        <!-- 5 -->
+        <result property="updaterId" column="updater_id"/>
+        <!-- 6 -->
+        <result property="updater" column="updater"/>
+        <!-- 7 -->
+        <result property="lockVersion" column="lock_version"/>
+        <!-- 8 -->
+        <result property="clientId" column="client_id"/>
+        <!-- 9 -->
+        <result property="couponId" column="coupon_id"/>
+        <!-- 10 -->
+        <result property="isUsed" column="is_used"/>
+        <!-- 11 -->
+        <result property="available" column="available"/>
+
+    </resultMap>
+    <!-- resultMap end -->
+
+    <!-- CRUD begin -->
+    <insert id="insert">
+        insert into t_client_coupon(
+        <!-- 0 -->id,
+        <!-- 1 -->created_time,
+        <!-- 2 -->updated_time,
+        <!-- 3 -->creator_id,
+        <!-- 4 -->creator,
+        <!-- 5 -->updater_id,
+        <!-- 6 -->updater,
+        <!-- 7 -->lock_version,
+        <!-- 8 -->client_id,
+        <!-- 9 -->coupon_id,
+        <!-- 10 -->is_used,
+        <!-- 11 -->available
+        )
+        values(
+        <!-- 0 -->#{id},
+        <!-- 1 -->#{createdTime},
+        <!-- 2 -->#{updatedTime},
+        <!-- 3 -->#{creatorId},
+        <!-- 4 -->#{creator},
+        <!-- 5 -->#{updaterId},
+        <!-- 6 -->#{updater},
+        <!-- 7 -->#{lockVersion},
+        <!-- 8 -->#{clientId},
+        <!-- 9 -->#{couponId},
+        <!-- 10 -->#{isUsed},
+        <!-- 11 -->#{available}
+        )
+
+    </insert>
+
+    <insert id="batchInsert">
+        insert into t_client_coupon(
+        <!-- 0 -->id,
+        <!-- 1 -->created_time,
+        <!-- 2 -->updated_time,
+        <!-- 3 -->creator_id,
+        <!-- 4 -->creator,
+        <!-- 5 -->updater_id,
+        <!-- 6 -->updater,
+        <!-- 7 -->lock_version,
+        <!-- 8 -->client_id,
+        <!-- 9 -->coupon_id,
+        <!-- 10 -->is_used,
+        <!-- 11 -->available
+        )
+        SELECT t_client_coupon_seq.NEXTVAL,A.* FROM (
+        <foreach collection="list" item="item" index="index" separator="union all">
+            SELECT
+            <!-- 0 -->#{item.createdTime},
+            <!-- 1 -->#{item.updatedTime},
+            <!-- 2 -->#{item.creatorId},
+            <!-- 3 -->#{item.creator},
+            <!-- 4 -->#{item.updaterId},
+            <!-- 5 -->#{item.updater},
+            <!-- 6 -->#{item.lockVersion},
+            <!-- 7 -->#{item.clientId},
+            <!-- 8 -->#{item.couponId},
+            <!-- 9 -->#{item.isUsed},
+            <!-- 10 -->#{item.available}
+            FROM DUAL
+        </foreach>
+        ) A
+    </insert>
+
+    <update id="update">
+        update t_client_coupon
+        <include refid="updateSetSql"/>
+        where id=#{id} and lock_version=#{lockVersion}
+    </update>
+
+    <sql id="updateSetSql">
+        <set>
+            <if test="createdTime !=null ">
+                <!-- 0 -->created_time=#{createdTime},
+            </if>
+            <if test="updatedTime !=null ">
+                <!-- 1 -->updated_time=#{updatedTime},
+            </if>
+            <if test="creatorId !=null ">
+                <!-- 2 -->creator_id=#{creatorId},
+            </if>
+            <if test="creator!=null and creator!='' ">
+                <!-- 3 -->creator=#{creator},
+            </if>
+            <if test="updaterId !=null ">
+                <!-- 4 -->updater_id=#{updaterId},
+            </if>
+            <if test="updater!=null and updater!='' ">
+                <!-- 5 -->updater=#{updater},
+            </if>
+            <!-- 6 -->lock_version=#{lockVersion}+1,
+            <if test="clientId !=null ">
+                <!-- 7 -->client_id=#{clientId},
+            </if>
+            <if test="couponId !=null ">
+                <!-- 8 -->coupon_id=#{couponId},
+            </if>
+            <if test="isUsed !=null ">
+                <!-- 9 -->is_used=#{isUsed},
+            </if>
+            <if test="available !=null ">
+                <!-- 10 -->available=#{available}
+            </if>
+
+        </set>
+    </sql>
+
+    <delete id="delete">
+        delete from t_client_coupon where id = #{id}
+    </delete>
+
+    <delete id="deleteByIdList">
+        delete from t_client_coupon t where t.id in
+        <foreach collection="list" index="dex" item="item" open="("
+                 close=")" separator=",">
+            #{item}
+        </foreach>
+    </delete>
+
+    <select id="findBo" resultMap="ClientCouponResultMap">
+        select * from t_client_coupon where id
+        = #{id}
+    </select>
+
+    <select id="findVo" resultMap="ClientCouponVoResultMap">
+        select * from t_client_coupon where
+        id = #{id}
+    </select>
+
+    <select id="listBoBySo" resultMap="ClientCouponResultMap">
+        select t.* from t_client_coupon t
+        <include refid="soSqlFilter"/>
+        order by id desc
+    </select>
+
+    <select id="listIdBySo" resultType="long">
+        select t.id from t_client_coupon t
+        <include refid="soSqlFilter"/>
+    </select>
+
+    <select id="listVoBySo" resultMap="ClientCouponVoResultMap">
+        select t.* from t_client_coupon t
+        <include refid="soSqlFilter"/>
+        order by id desc
+    </select>
+
+    <select id="countBySo" resultType="int">
+        select count(1) from t_client_coupon t
+        <include refid="soSqlFilter"/>
+    </select>
+
+    <select id="listVoByIdList" resultMap="ClientCouponVoResultMap">
+        select * from t_client_coupon t where t.id in
+        <foreach collection="list" index="dex" item="item" open="("
+                 close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+
+    <select id="listBoByIdList" resultMap="ClientCouponResultMap">
+        select * from t_client_coupon t where t.id in
+        <foreach collection="list" index="dex" item="item" open="("
+                 close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+
+    <sql id="soSqlFilter">
+        <where>
+            <include refid="soSqlFilterRef"/>
+            <if test="id !=null ">
+                and t.id = #{id}
+            </if>
+            <if test="creatorId !=null ">
+                and t.creator_id = #{creatorId}
+            </if>
+            <if test="creator !=null and creator !='' ">
+                and t.creator = #{creator}
+            </if>
+            <if test="updaterId !=null ">
+                and t.updater_id = #{updaterId}
+            </if>
+            <if test="updater !=null and updater !='' ">
+                and t.updater = #{updater}
+            </if>
+            <if test="clientId !=null ">
+                and t.client_id = #{clientId}
+            </if>
+            <if test="couponId !=null ">
+                and t.coupon_id = #{couponId}
+            </if>
+            <if test="isUsed !=null ">
+                and t.is_used = #{isUsed}
+            </if>
+            <if test="available !=null ">
+                and t.available = #{available}
+            </if>
+            <if test="idList !=null and idList.size() > 0 ">
+                and t.id in
+                <foreach collection="idList" index="dex" item="item" open="("
+                         close=")" separator=",">
+                    #{item}
+                </foreach>
+            </if>
+
+        </where>
+    </sql>
+    <!-- CRUD end -->
+
+    <!-- business begin -->
+    <sql id="soSqlFilterRef">
+    </sql>
+    <!-- business end -->
+</mapper>
